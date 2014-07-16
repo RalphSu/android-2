@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ui"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo" >
+        <activity
+            android:name="com.example.ui.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.ui.TextFieldsActivity"
+            android:label="@string/title_activity_textbox" >
+        </activity>
+        <activity
+            android:name="com.example.ui.PasswordFieldActivity"
+            android:label="@string/title_activity_password_field" >
+        </activity>
+        <activity
+            android:name="com.example.ui.ButtonActivity"
+            android:label="@string/title_activity_button" >
+        </activity>
+        <activity
+            android:name="com.example.ui.CheckBoxActivity"
+            android:label="@string/title_activity_check_box" >
+        </activity>
+        <activity
+            android:name="com.example.ui.RadioButtonActivity"
+            android:label="@string/title_activity_radio_button" >
+        </activity>
+        <activity
+            android:name="com.example.ui.ToggleButtonActivity"
+            android:label="@string/title_activity_toggle_button" >
+        </activity>
+        <activity
+            android:name="com.example.ui.RatingBarActivity"
+            android:label="@string/title_activity_rating_bar" >
+        </activity>
+        <activity
+            android:name="com.example.ui.SpinnerActivity"
+            android:label="@string/title_activity_spinner" >
+        </activity>
+        <activity
+            android:name="com.example.ui.DatePickerActivity"
+            android:label="@string/title_activity_date_picker" >
+        </activity>
+        <activity
+            android:name="com.example.ui.TimePickerActivity"
+            android:label="@string/title_activity_time_picker" >
+        </activity>
+        <activity
+            android:name="com.example.ui.AnalogClockActivity"
+            android:label="@string/title_activity_analog_clock" >
+        </activity>
+        <activity
+            android:name="com.example.ui.ProgressBarActivity"
+            android:label="@string/title_activity_progress_bar" >
+        </activity>
+        <activity
+            android:name="com.example.ui.AlertDialogActivity"
+            android:label="@string/title_activity_alert_dialog" >
+        </activity>
+    </application>
+
+</manifest>

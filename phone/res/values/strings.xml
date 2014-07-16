@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">手机拨号</string>
+    <string name="action_settings">设置</string>
+    <string name="text_message">请输入手机号码</string>
+    <string name="button_call">拨号</string>
+    <string name="button_message">发信息</string>
+    <string name="button_message_api">打开信息发送界面</string>
+    <string name="title_activity_send_message">发送短信</string>
+    <string name="text_label">请编辑短信内容</string>
+
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+   <string name="textview_get">通过GET方式提交请求参数给web</string> 
+   <string name="button_doGet">doGet</string> 
+   <string name="button_doPost">doPost</string> 
+   <string name="success">success</string> 
+   <string name="fail">fail</string> 
+    
+
+</resources>
