@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -78,6 +79,7 @@ public class GetAndPostService {
 				pairs.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
 			}
 		}
+		
 		UrlEncodedFormEntity entity = new UrlEncodedFormEntity(pairs, encoding);
 		HttpPost httpPost = new HttpPost(path);
 		httpPost.setEntity(entity);

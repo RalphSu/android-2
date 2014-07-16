@@ -14,7 +14,8 @@
         android:id="@+id/image_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:inputType="text" 
+        android:text="http://www.baidu.com/img/bdlogo.gif"/>
 
     <Button
         android:id="@+id/showImage"

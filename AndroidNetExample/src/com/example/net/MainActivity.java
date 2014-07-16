@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 	 */
 	public void openActivity(View view) {
 		Intent intent = new Intent(this, GETandPOSTActivity.class);
-		intent.setClassName("com.example.android", "com.example.android.MainActivity");
+		intent.setClassName("com.example.data", "com.example.data.MainActivity");
 		//com.example.android.MainActivity
 		startActivity(intent);
 	}
