@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">数据存储</string>
+    <string name="action_settings">设置</string>
+    <string name="btn_display">显示</string>
+    <string name="btn_save">保存</string>
+    <string name="btn_save2sdcard">保存至SD卡</string>
+    <string name="btn_save2db">保存至数据库</string>
+    <string name="btn_open">打开</string>
+    <string name="btn_list">显示数据</string>
+    <string name="title_activity_preferences">Preferences</string>
+    <string name="lblUsername">用户名:</string>
+    <string name="lblPassword">密码:</string>
+    <string name="lblFilename">文件名:</string>
+    <string name="lblFilecontent">文件内容:</string>
+    <string name="lblPhone">手机品牌:</string>
+    <string name="key_username">username</string>
+    <string name="key_password">password</string>
+    <string name="title_activity_file">File</string>
+    <string name="save_success">保存成功</string>
+    <string name="save_fail">保存失败</string>
+    <string name="open_success">打开成功</string>
+    <string name="open_fail">打开失败</string>
+    <string name="title_activity_data_base">DataBase</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
