@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component jdk="Android 2.3.3 Platform" jdk_type="Android SDK">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<excludeFolder url="file://$MODULE_DIR$/.idea"/>
+	</contentEntry>
+</component>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- For Preference -->
+    <style name="YXPreference">
+        <item name="android:layout">@layout/yx_preference</item>
+    </style>
+
+    <style name="YXPreferenceScreen">
+        <item name="android:layout">@layout/yx_preference</item>
+        <item name="android:widgetLayout">@layout/yx_preference_screen</item>
+    </style>
+
+    <style name="YXPreference.Child">
+        <item name="android:layout">@layout/yx_preference_child</item>
+    </style>
+
+    <style name="YXPreference.Information">
+        <item name="android:layout">@layout/yx_preference</item>
+        <item name="android:enabled">false</item>
+        <item name="android:shouldDisableView">false</item>
+    </style>
+
+    <style name="YXPreference.Catagory">
+        <item name="android:layout">@layout/yx_preference_catalog</item>
+    </style>
+
+    <style name="YXPreference.CheckBoxPreference">
+        <item name="android:widgetLayout">@layout/yx_preference_checkbox</item>
+    </style>
+
+    <style name="YXPreference.RingtonePreference">
+        <item name="android:ringtoneType">ringtone</item>
+        <item name="android:showSilent">true</item>
+        <item name="android:showDefault">true</item>
+    </style>
+
+    <style name="YXPreference.DialogPreference.YesNoPreference">
+        <item name="android:positiveButtonText">@android:string/yes</item>
+        <item name="android:negativeButtonText">@android:string/no</item>
+    </style>
+
+    <style name="YXPreference.DialogPreference">
+        <item name="android:positiveButtonText">@android:string/ok</item>
+        <item name="android:negativeButtonText">@android:string/cancel</item>
+    </style>
+
+    <style name="YXPreference.DialogPreference.EditTextPreference">
+        <item name="android:dialogLayout">@layout/yx_preference_dialog_edittext</item>
+    </style>
+
+    <style name="YXListView">
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0px</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:listSelector">@drawable/list_selector_background</item>
+        <!-- cause some m9 crash -->
+        <!-- <item name="android:overScrollMode">always</item> -->
+    </style>
+
+    <!-- Theme For Preference -->
+    <style name="YXTheme.Basic" parent="android:Theme">
+        <item name="android:listViewStyle">@style/YXListView</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:preferenceScreenStyle">@style/YXPreferenceScreen</item>
+        <item name="android:preferenceStyle">@style/YXPreference</item>
+        <item name="android:preferenceLayoutChild">@style/YXPreference.Child</item>
+        <item name="android:preferenceInformationStyle">@style/YXPreference.Information</item>
+        <item name="android:preferenceCategoryStyle">@style/YXPreference.Catagory</item>
+        <item name="android:checkBoxPreferenceStyle">@style/YXPreference.CheckBoxPreference</item>
+        <item name="android:ringtonePreferenceStyle">@style/YXPreference.RingtonePreference</item>
+        <item name="android:yesNoPreferenceStyle">@style/YXPreference.DialogPreference.YesNoPreference</item>
+        <item name="android:dialogPreferenceStyle">@style/YXPreference.DialogPreference</item>
+        <item name="android:editTextPreferenceStyle">@style/YXPreference.DialogPreference.EditTextPreference</item>
+        <item name="android:checkboxStyle">@style/YXCheckBox</item>
+    </style>
+
+    <style name="YXTheme.Preference" parent="YXTheme.Basic">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTitleSize">0dp</item>
+    </style>
+
+    <style name="YXTheme.Search" parent="YXTheme.Basic">
+        <item name="android:windowBackground">@color/semitransparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@+android:style/Animation.Translucent</item>
+    </style>
+
+    <style name="YXTheme.Launcher" parent="YXTheme.Basic">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@drawable/yx_trans</item>
+        <item name="android:windowBackground">@drawable/yx_trans</item>
+        <item name="android:windowTitleSize">0dp</item>
+    </style>
+
+    <style name="YXTheme.DataSheet" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@drawable/yx_trans</item>
+        <item name="android:windowBackground">@drawable/yx_trans</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/DataSheetAnimation</item>
+    </style>
+
+    <style name="noBgFullScreen">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>

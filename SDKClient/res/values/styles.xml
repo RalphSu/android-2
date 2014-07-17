@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Navigation Header -->
+    <style name="NavPage">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center_horizontal</item>
+        <!-- <item name="android:background">@drawable/nav_page</item> -->
+        <item name="android:background">@color/navpage</item>
+    </style>
+
+    <!-- Android Style -->
+    <style name="YXTitle">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">19dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="YXTitleButton">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:minWidth">75dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="YXFooter">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:minHeight">54dp</item>
+    </style>
+
+    <style name="YXBody">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:paddingRight">18dp</item>
+        <item name="android:paddingTop">26dp</item>
+        <item name="android:paddingBottom">18dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:fadingEdge">@null</item>
+    </style>
+
+    <style name="YXScroll">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">0dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <!-- <item name="android:fadingEdge">@null</item> -->
+    </style>
+
+    <style name="YXBlock">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="YXSplit">
+        <item name="android:layout_width">8dp</item>
+        <item name="android:layout_height">5dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="YXLabelSplit">
+        <item name="android:layout_width">10dp</item>
+        <item name="android:layout_height">13dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="YXEditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/BasicTextSize</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/yx_edit</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">43dp</item>
+        <item name="android:textColorHint">@color/lightgrey</item>
+    </style>
+
+    <style name="YXLine">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="YXLineEditText" parent="@style/YXEditText">
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+    <style name="YXMultiLineEditText" parent="@style/YXLineEditText">
+        <item name="android:singleLine">false</item>
+        <item name="android:minLines">3</item>
+        <item name="android:gravity">top</item>
+    </style>
+
+    <style name="YXLineEditPass" parent="@style/YXLineEditText">
+        <item name="android:password">true</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="YXButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/yx_btn_text</item>
+        <item name="android:background">@null</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:minWidth">40dp</item>
+    </style>
+
+    <style name="YXCheckBox">
+        <item name="android:background">@drawable/yx_checkbox_btn</item>
+    </style>
+
+    <style name="YXLineButton" parent="@style/YXButton">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/yx_style_two_btn_text</item>
+    </style>
+
+    <style name="YXToolbarButton" parent="@style/YXButton">
+        <item name="android:minWidth">45dp</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:textSize">@dimen/SmallerTextSize</item>
+        <item name="android:textColor">#2C2C2C</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="YXLineActionButton" parent="@style/YXLineButton">
+        <item name="android:background">@drawable/btn_style_one</item>
+        <item name="android:textColor">@color/yx_style_one_btn_text</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDy">1.2</item>
+        <item name="android:shadowDx">1.2</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="YXBriefText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#707070</item>
+        <item name="android:textSize">@dimen/BasicTextSize</item>
+        <item name="android:shadowColor">#A0FFFFFF</item>
+        <item name="android:shadowDy">1.2</item>
+        <item name="android:shadowDx">1.2</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+
+    <style name="YXLabel" parent="YXBriefText">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="YXLineLabel" parent="YXLabel">
+        <item name="android:gravity">left</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+    </style>
+
+    <style name="YXLogin" parent="YXLabel">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/LargeTextSize</item>
+    </style>
+
+    <style name="YXDivider">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#B2B2B5</item>
+    </style>
+
+    <style name="YXListItem">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:minHeight">60dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="YXFriendListItem" parent="YXListItem">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">6dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+
+    <style name="YXListCatalog">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#CED2D7</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#595C61</item>
+    </style>
+
+    <style name="ChoicePreferenceButton">
+        <item name="android:button">@null</item>
+        <item name="android:minWidth">60dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/yx_choice_text_color</item>
+    </style>
+
+    <!-- Font Styles -->
+    <style name="YXFontTitleInList">
+        <item name="android:textSize">@dimen/LargeTextSize</item>
+        <item name="android:textColor">@color/yx_list_textcolor_one</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <!--
+		<item name="android:shadowColor">#80A0A0A0</item>
+		<item name="android:shadowDy">1.2</item>
+		<item name="android:shadowDx">1.2</item>
+		<item name="android:shadowRadius">1</item>
+        -->
+    </style>
+
+    <style name="YXFontTipInList">
+        <item name="android:textSize">@dimen/SmallTextSize</item>
+        <item name="android:textColor">@color/yx_list_textcolor_two</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="YXFontTimeInList" parent="YXFontTipInList">
+        <item name="android:textSize">@dimen/SmallTextSize</item>
+        <item name="android:textColor">@color/yx_list_textcolor_time</item>
+    </style>
+
+    <style name="YXFontPreferenceProfile" parent="YXFontPreferenceLarge">
+        <item name="android:textSize">@dimen/TitleTextSize</item>
+    </style>
+
+    <style name="YXFontPreferenceLarge">
+        <item name="android:textAppearance">@style/YXPreferenceTextLarge</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="YXFontPreferenceSmall">
+        <item name="android:textAppearance">@style/YXPreferenceTextSmall</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:shadowColor">#A0FFFFFF</item>
+        <item name="android:shadowDy">1.2</item>
+        <item name="android:shadowDx">1.2</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="YXFontPreferenceSummary" parent="YXFontPreferenceSmall">
+        <item name="android:textAppearance">@style/YXPreferenceTextSmall</item>
+        <item name="android:textSize">@dimen/BasicTextSize</item>
+    </style>
+
+    <style name="YXFontEmptyMsgLarge" parent="YXFontPreferenceLarge">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/yx_pref_summary</item>
+    </style>
+
+    <style name="YXPreferenceTextLarge">
+        <item name="android:textSize">@dimen/LargeTextSize</item>
+        <item name="android:textColor">@color/yx_pref_title</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="YXPreferenceTextSmall">
+        <item name="android:textSize">@dimen/SmallTextSize</item>
+        <item name="android:textColor">@color/yx_pref_summary</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- Application Style -->
+    <style name="ChattingUISplit">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/lightgrey</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:shadowDy">1.2</item>
+        <item name="android:shadowDx">1.2</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowColor">#A0FFFFFF</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:paddingTop">11dp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+
+    <style name="ChattingUIText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">@dimen/ChattingTextSize</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:maxWidth">240dp</item>
+        <item name="android:minHeight">15dp</item>
+    </style>
+
+    <style name="ChattingUIFMessageText" parent="ChattingUIText">
+        <item name="android:textColor">@color/yx_pref_summary</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="ChattingUIVoiceLength">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/lightgrey</item>
+        <item name="android:textSize">@dimen/SmallTextSize</item>
+        <item name="android:shadowColor">#80FFFFFF</item>
+        <item name="android:shadowDy">1.4</item>
+        <item name="android:shadowDx">1.4</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="ChattingUIMailSenderText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">#4271AD</item>
+        <item name="android:textSize">@dimen/BasicTextSize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxWidth">240dp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="ChattingUISenderText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">#3F3F3F</item>
+        <item name="android:textSize">@dimen/SmallTextSize</item>
+        <item name="android:shadowDy">1.2</item>
+        <item name="android:shadowDx">1.2</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowColor">#A0FFFFFF</item>
+        <item name="android:maxWidth">240dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingLeft">7dp</item>
+        <item name="android:paddingRight">7dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
+
+    <style name="ChattingUIContent">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="ChattingUIThumbnail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxWidth">240dp</item>
+    </style>
+
+    <style name="ChattingUIWordCount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="ChattingUISystem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#F0F0F0</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="HyperText" parent="YXButton">
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/yx_hyper_text</item>
+        <item name="android:textSize">@dimen/BasicTextSize</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="DataSheetAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
+    </style>
+
+</resources>

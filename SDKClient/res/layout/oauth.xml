@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              style="@style/NavPage">
+
+
+    <Button
+            android:id="@+id/reg_btn"
+            style="@style/YXLineActionButton"
+            android:layout_margin="10dp"
+            android:text="测试App调用获取"/>
+
+    <Button
+            android:id="@+id/goto_send_btn"
+            style="@style/YXLineActionButton"
+            android:layout_margin="10dp"
+            android:text="测试WEBVIEW获取"/>
+
+</LinearLayout>
