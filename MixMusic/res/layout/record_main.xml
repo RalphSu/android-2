@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/layout_changed"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#f8f3f3" android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/imageview_changed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="100dp"
+            android:background="@drawable/changed" />
+
+        <TextView
+            android:id="@+id/textview_changed"
+            style="@style/record_changed_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/imageview_changed"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="换歌试试" />
+    </RelativeLayout>
+    <!-- 合成动画栏 -->
+
+    <TextView
+        android:id="@+id/textview_music_name"
+        style="@style/select_music_name_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="70dp"
+        android:text="歌曲：" />
+
+    <RelativeLayout
+        android:id="@+id/layout_record"
+        android:layout_width="267dp"
+        android:layout_height="267dp"
+        android:layout_centerInParent="true" >
+
+        <ImageView
+            android:id="@+id/imageview_animation"
+            android:layout_width="267dp"
+            android:layout_height="267dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/record_animation" />
+
+        <Chronometer
+            android:id="@+id/record_chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#FFFFFF"
+            android:textSize="60sp" />
+
+        <ImageView
+            android:id="@+id/imageview_play"
+            android:layout_width="38dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/record_chronometer"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/play"/>
+
+        <ImageView
+            android:id="@+id/imageview_pause"
+            android:layout_width="38dp"
+            android:layout_height="47dp"
+            android:layout_below="@id/record_chronometer"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/pause"
+            android:visibility="gone" />
+         <ImageView
+            android:id="@+id/imageview_stop"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_below="@id/record_chronometer"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/stop"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_record"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textview_action"
+            style="@style/record_action_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="点击开始录音" />
+    </RelativeLayout>
+    <!-- 进度条 -->
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:max="100"
+        android:progressDrawable="@drawable/progressbar"
+        android:visibility="gone" />
+
+    <!-- 工具栏 -->
+
+   <LinearLayout
+        android:id="@+id/layout_tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/layout_reset"
+            android:layout_width="56dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/small_click_bg"
+            android:gravity="center_vertical" >
+
+            <TextView
+                style="@style/record_tools_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="重试" />
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/layout_zring"
+            android:layout_width="87dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/long_click_bg"
+            android:gravity="center_vertical" >
+
+            <TextView
+                style="@style/record_tools_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="设为振铃" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_save"
+            android:layout_width="56dp"
+            android:layout_height="31dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/small_click_bg"
+            android:gravity="center_vertical" >
+
+            <TextView
+                style="@style/record_tools_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="保存" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- 信息提示栏 -->
+
+</RelativeLayout>
