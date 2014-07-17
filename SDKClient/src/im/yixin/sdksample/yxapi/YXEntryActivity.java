@@ -3,10 +3,6 @@
  */
 package im.yixin.sdksample.yxapi;
 
-import android.content.Intent;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.Toast;
 import im.yixin.sdk.api.BaseReq;
 import im.yixin.sdk.api.BaseResp;
 import im.yixin.sdk.api.BaseYXEntryActivity;
@@ -16,6 +12,11 @@ import im.yixin.sdk.api.SendMessageToYX;
 import im.yixin.sdk.api.YXAPIFactory;
 import im.yixin.sdk.util.YixinConstants;
 import im.yixin.sdksample.R;
+import android.content.Intent;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * @author yixinopen@188.com
@@ -32,9 +33,8 @@ public class YXEntryActivity extends BaseYXEntryActivity {
 	private void showUI() {
 		setContentView(R.layout.yixin_callback);
 		Intent intent = getIntent();
-		// TextView tv = (TextView)this.findViewById(R.id.result_tv);
-		// tv.setText("参数：" +
-		// intent.getStringExtra(YixinConstants.KEY_CONTENT));
+		TextView tv = (TextView) this.findViewById(R.id.result_tv2);
+		tv.setText("参数：" + intent.getStringExtra(YixinConstants.KEY_CONTENT));
 	}
 
 	/*******************
@@ -47,7 +47,8 @@ public class YXEntryActivity extends BaseYXEntryActivity {
 	}
 
 	/**
-	 * 易信调用调用时的触发函数
+	 * 易信主动发送请求到第三方APP时，易信调用第三方APP的此函数。
+	 * 该函数由父类BaseYXEntryActivity的onCreate或者onNewIntent进行调用。
 	 */
 	@Override
 	public void onResp(BaseResp resp) {
@@ -93,7 +94,8 @@ public class YXEntryActivity extends BaseYXEntryActivity {
 	}
 
 	/**
-	 * 易信调用调用时的触发函数
+	 * 易信响应第三方APP的请求时，易信调用第三方APP的此函数。 第三方APP通过sendRequest分享内容到易信，易信处理完毕后调用此函数。
+	 * 该函数由父类的onCreate或者onNewIntent进行调用。
 	 */
 	@Override
 	public void onReq(BaseReq req) {

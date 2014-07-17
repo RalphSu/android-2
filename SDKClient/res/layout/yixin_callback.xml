@@ -4,7 +4,7 @@
     style="@style/NavPage">
 
    <TextView
-        android:id="@+id/result_tv"
+        android:id="@+id/result_tv2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 	 	android:textSize="20dp"

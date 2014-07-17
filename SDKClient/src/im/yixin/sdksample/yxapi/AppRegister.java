@@ -31,11 +31,11 @@ public class AppRegister extends YXAPIBaseBroadcastReceiver {
 	 * @param protocol
 	 */
 	protected void onAfterYixinStart(final YXMessageProtocol protocol){
-		/*Log.i("Yixin.SDK.AppRegister", "ClientonAfterYixinStart@" + (new Date()) + ",AppId="
+		Log.i("Yixin.SDK.AppRegister", "ClientonAfterYixinStart@" + (new Date()) + ",AppId="
 				+ protocol.getAppId() 
 				+ ",Command=" + protocol.getCommand()
 				+ ",SdkVersion=" + protocol.getSdkVersion()
-				+ ",appPackage=" + protocol.getAppPackage());	*/	
+				+ ",appPackage=" + protocol.getAppPackage());	
 	}
 	
 	
