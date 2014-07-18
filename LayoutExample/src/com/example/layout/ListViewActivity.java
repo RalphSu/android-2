@@ -21,7 +21,6 @@ public class ListViewActivity extends ListActivity {
 
 		// no more this
 		// setContentView(R.layout.list_fruit);
-
 		setListAdapter(new ArrayAdapter<String>(this, R.layout.activity_listview, FRUITS));
 
 		ListView listView = getListView();
