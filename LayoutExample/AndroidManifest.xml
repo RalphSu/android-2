@@ -16,37 +16,43 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.layout.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
+           
+        </activity>
+        <activity
+            android:name=".LinearLayoutHorizontalActivity"
+            android:label="@string/title_activity_linear_layout_horizontal" >
+        </activity>
+        <activity
+            android:name=".TableLayoutActivity"
+            android:label="@string/title_activity_table_layout" >
+            
+        </activity>
+        <activity
+            android:name=".ListViewActivity"
+            android:label="@string/title_activity_list_view" >
+        </activity>
+        <activity
+            android:name=".WebViewActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ListviewAdapterActivity"
+            android:label="@string/title_activity_listview_adapter" >
+        </activity>
+        <activity
+            android:name=".GridViewActivity"
+            android:label="@string/title_activity_grid_view" >
+        </activity>
+        <activity
+            android:name=".TabhostActivity"
+            android:label="@string/title_activity_tabhost" >
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="com.example.layout.LinearLayoutHorizontalActivity"
-            android:label="@string/title_activity_linear_layout_horizontal" >
-        </activity>
-        <activity
-            android:name="com.example.layout.TableLayoutActivity"
-            android:label="@string/title_activity_table_layout" >
-        </activity>
-        <activity
-            android:name="com.example.layout.ListViewActivity"
-            android:label="@string/title_activity_list_view" >
-        </activity>
-        <activity
-            android:name="com.example.layout.WebViewActivity"
-            android:theme="@android:style/Theme.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.example.layout.ListviewAdapterActivity"
-            android:label="@string/title_activity_listview_adapter" >
-        </activity>
-        <activity
-            android:name="com.example.layout.GridViewActivity"
-            android:label="@string/title_activity_grid_view" >
         </activity>
     </application>
 

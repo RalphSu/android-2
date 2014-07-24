@@ -2,14 +2,12 @@ package com.mixmusic.adapter;
 
 import java.util.HashMap;
 import java.util.List;
-
 import com.mixmusic.R;
 import com.mixmusic.biz.ApiConfigs;
 import com.mixmusic.biz.AppConstant;
 import com.mixmusic.service.PlayerService;
 import com.mixmusic.utils.DialogUtil;
 import com.mixmusic.view.FindActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -52,32 +50,31 @@ public class LibraryListAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
+
 		return data == null ? 0 : data.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
+
 		return data.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
+
 		return position;
 	}
 
 	@SuppressLint("ResourceAsColor")
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
+
 		final ViewHolder viewHolder;
 		final HashMap<String, Object> info = data.get(position);
 
 		if (convertView == null) {
-			convertView = LayoutInflater.from(context).inflate(
-					R.layout.library_list_item, null);
+			convertView = LayoutInflater.from(context).inflate(R.layout.library_list_item, null);
 			viewHolder = new ViewHolder();
 			getViewHolder(convertView, viewHolder);
 			convertView.setTag(viewHolder);
@@ -86,77 +83,59 @@ public class LibraryListAdapter extends BaseAdapter {
 		}
 		if (info.get("id").equals(ApiConfigs.selectId)) {
 			viewHolder.imageview_selected.setVisibility(View.VISIBLE);
-		}
-		else
-		{
+		} else {
 			viewHolder.imageview_selected.setVisibility(View.GONE);
 		}
 
 		if (position == currItemIndex) {
-			viewHolder.imageview_play
-					.setBackgroundResource(R.drawable.list_stop);
+			viewHolder.imageview_play.setBackgroundResource(R.drawable.list_stop);
 		} else {
 
-			viewHolder.imageview_play
-					.setBackgroundResource(R.drawable.list_icon);
+			viewHolder.imageview_play.setBackgroundResource(R.drawable.list_icon);
 		}
-		
-		
+
 		viewHolder.textview_ring.setText(info.get("musicName").toString());
-//
+		//
 		viewHolder.textview_ring.setText(info.get("musicName").toString());
 		//
 		viewHolder.imageview_play.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+
 				currItemIndex = position;
-				System.out.println("----musicUrl----"
-						+ info.get("musicUrl").toString());
 				if (current == position) {
 					if (isPlaying) {
-						viewHolder.imageview_play
-								.setBackgroundResource(R.drawable.list_icon);
-						play(info.get("musicUrl").toString(),
-								AppConstant.PlayerMsg.STOP_MSG);
+						viewHolder.imageview_play.setBackgroundResource(R.drawable.list_icon);
+						play(info.get("musicUrl").toString(), AppConstant.PlayerMsg.STOP_MSG);
 					} else {
-						viewHolder.imageview_play
-								.setBackgroundResource(R.drawable.list_icon);
-						play(info.get("musicUrl").toString(),
-								AppConstant.PlayerMsg.PLAY_MSG);
+						viewHolder.imageview_play.setBackgroundResource(R.drawable.list_icon);
+						play(info.get("musicUrl").toString(), AppConstant.PlayerMsg.PLAY_MSG);
 						notifyDataSetChanged();
 					}
 				} else {
 					if (isPlaying) {
-						viewHolder.imageview_play
-								.setBackgroundResource(R.drawable.list_icon);
+						viewHolder.imageview_play.setBackgroundResource(R.drawable.list_icon);
 					} else {
-						viewHolder.imageview_play
-								.setBackgroundResource(R.drawable.list_stop);
+						viewHolder.imageview_play.setBackgroundResource(R.drawable.list_stop);
 					}
-					play(info.get("musicUrl").toString(),
-							AppConstant.PlayerMsg.PLAY_MSG);
+					play(info.get("musicUrl").toString(), AppConstant.PlayerMsg.PLAY_MSG);
 					notifyDataSetChanged();
 				}
 				current = position;
 
 			}
 		});
-		
+
 		convertView.setFocusable(false);
 		return convertView;
 	}
 
 	void getViewHolder(View view, ViewHolder viewHolder) {
-		viewHolder.imageview_play = (ImageView) view
-				.findViewById(R.id.imageview_play);
-		viewHolder.textview_ring = (TextView) view
-				.findViewById(R.id.textview_ring);
-		viewHolder.imageview_selected = (ImageView) view
-				.findViewById(R.id.imageview_selected);
-		viewHolder.layout_select = (RelativeLayout) view
-				.findViewById(R.id.layout_select);
+		viewHolder.imageview_play = (ImageView) view.findViewById(R.id.imageview_play);
+		viewHolder.textview_ring = (TextView) view.findViewById(R.id.textview_ring);
+		viewHolder.imageview_selected = (ImageView) view.findViewById(R.id.imageview_selected);
+		viewHolder.layout_select = (RelativeLayout) view.findViewById(R.id.layout_select);
 
 	}
 
@@ -165,7 +144,7 @@ public class LibraryListAdapter extends BaseAdapter {
 		ImageView imageview_play, imageview_selected;
 		RelativeLayout layout_select;
 	}
-	
+
 	/**
 	 * ≤•∑≈“Ù¿÷
 	 * 

@@ -1,18 +1,6 @@
 package com.mixmusic.view;
 
 import java.io.File;
-import java.util.List;
-
-import com.mixmusic.R;
-import com.mixmusic.biz.ApiConfigs;
-import com.mixmusic.biz.AppConstant;
-import com.mixmusic.biz.BizManager;
-import com.mixmusic.record.ErrorCode;
-import com.mixmusic.record.MediaRecordFunc;
-import com.mixmusic.service.MediaPlayerService;
-import com.mixmusic.service.PlayerService;
-import com.mixmusic.utils.DialogUtil;
-import com.mixmusic.utils.OnTabActivityResultListener;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -21,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.AnimationDrawable;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,20 +25,27 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class RecordActivity extends Activity implements OnClickListener,
-		OnChronometerTickListener, OnTabActivityResultListener {
+import com.mixmusic.R;
+import com.mixmusic.biz.ApiConfigs;
+import com.mixmusic.biz.AppConstant;
+import com.mixmusic.biz.BizManager;
+import com.mixmusic.record.MediaRecordFunc;
+import com.mixmusic.service.PlayerService;
+import com.mixmusic.utils.DialogUtil;
+import com.mixmusic.utils.OnTabActivityResultListener;
+
+public class RecordActivity extends Activity implements OnClickListener, OnChronometerTickListener,
+		OnTabActivityResultListener {
 
 	private Context mContext;
 	private AnimationDrawable animationDrawable;
 	private Chronometer record_chronometer; // 计时组件
 	private ProgressBar progressBar;
 	private LinearLayout layout_tools;
-	private RelativeLayout layout_changed, layout_record, layout_action,
-			layout_reset, layout_zring, layout_save;
+	private RelativeLayout layout_changed, layout_record, layout_action, layout_reset, layout_zring, layout_save;
 	private ImageView imageview_animation, imageview_play, imageview_pause;
-	private TextView textview_action, textview_changed,textview_music_name;
-	public static Handler loginHandler, uploadHandler, mixHandler,
-			saveReNameHandler;
+	private TextView textview_action, textview_changed, textview_music_name;
+	public static Handler loginHandler, uploadHandler, mixHandler, saveReNameHandler;
 	private MediaRecordFunc mRecord = MediaRecordFunc.getInstance();
 	private File audioFile; // 当前录音文件
 	private String playUrl; // 合成音乐播放地址
@@ -69,7 +63,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.record_main);
 		mContext = RecordActivity.this;
@@ -79,7 +73,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 		initData();
 		IntentFilter filter = new IntentFilter();
 		filter.addAction("MusicChange");
-		mContext.registerReceiver(onlineBroadcastReceiver,filter);
+		mContext.registerReceiver(onlineBroadcastReceiver, filter);
 	}
 
 	/**
@@ -106,8 +100,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 		record_chronometer = (Chronometer) findViewById(R.id.record_chronometer); // 计时器
 		progressBar = (ProgressBar) findViewById(R.id.progressBar);
 		// 拿到动画
-		animationDrawable = (AnimationDrawable) imageview_animation
-				.getDrawable();
+		animationDrawable = (AnimationDrawable) imageview_animation.getDrawable();
 		animationDrawable.stop();
 	}
 
@@ -116,7 +109,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 	 */
 	@Override
 	public void onTabActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
+
 		if (resultCode == Activity.RESULT_OK) {
 			ApiConfigs.selectId = data.getStringExtra("selectId");
 			ApiConfigs.selectName = data.getStringExtra("selectName");
@@ -139,7 +132,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 	 * 配置事件
 	 */
 	private void initEvent() {
-		// TODO Auto-generated method stub
+
 		textview_changed.setOnClickListener(this);
 		textview_action.setOnClickListener(this);
 		layout_record.setOnClickListener(this);
@@ -181,8 +174,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 					textview_music_name.setText("歌曲：" + ApiConfigs.selectName);
 					DialogUtil.getInstance().ShowToast(mContext, "欢迎使用幻音合成");
 				} else {
-					DialogUtil.getInstance()
-							.ShowToast(mContext, "客观别急，请先连接网络吧");
+					DialogUtil.getInstance().ShowToast(mContext, "客观别急，请先连接网络吧");
 				}
 				super.handleMessage(msg);
 			}
@@ -197,11 +189,9 @@ public class RecordActivity extends Activity implements OnClickListener,
 					System.out.println(">>>>>>----合成ID：" + msg.obj.toString());
 					textview_action.setText("正在合成...");
 					animationDrawable.start();
-					BizManager.getInstance().checkMixMusic(mContext,
-							msg.obj.toString(), "amr", mixHandler);
+					BizManager.getInstance().checkMixMusic(mContext, msg.obj.toString(), "amr", mixHandler);
 				} else {
-					DialogUtil.getInstance().ShowToast(mContext,
-							msg.obj.toString());
+					DialogUtil.getInstance().ShowToast(mContext, msg.obj.toString());
 					reSet();
 				}
 				pauseControl(false);
@@ -215,8 +205,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 			public void handleMessage(Message msg) {
 				if (msg.what == 1) {
 					// 获得播放地址
-					System.out.println(">>>>>>----播放地playUrl："
-							+ msg.obj.toString());
+					System.out.println(">>>>>>----播放地playUrl：" + msg.obj.toString());
 					playUrl = msg.obj.toString();
 					mixed();
 				} else {
@@ -251,7 +240,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void onChronometerTick(Chronometer arg0) {
-		// TODO Auto-generated method stub
+
 		String time = arg0.getText().toString();
 		if ("00:45".equals(time)) {
 			// 显示布局
@@ -261,7 +250,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+
 		switch (v.getId()) {
 		case R.id.textview_changed:
 			Intent intent = new Intent(mContext, ChangedActivity.class);
@@ -315,8 +304,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 			DialogUtil.getInstance().ShowToast(mContext, "Coming Soon");
 			break;
 		case R.id.layout_save:
-			DialogUtil.getInstance().ShowAlertDialog(mContext,
-					saveReNameHandler);
+			DialogUtil.getInstance().ShowAlertDialog(mContext, saveReNameHandler);
 			break;
 		}
 	}
@@ -380,15 +368,14 @@ public class RecordActivity extends Activity implements OnClickListener,
 
 		progressBar.setVisibility(View.VISIBLE);
 		// 在录制完成时设置，在RecordTask的onPostExecute中完成
-		biz.updateFileToMix(mContext, progressBar, ApiConfigs.selectId,
-				audioFile, "amr", uploadHandler);
+		biz.updateFileToMix(mContext, progressBar, ApiConfigs.selectId, audioFile, "amr", uploadHandler);
 	}
 
 	/**
 	 * 合成功能后的设置
 	 */
 	private void mixed() {
-		// TODO Auto-generated method stub
+
 		textview_action.setText("合成成功，点击可播放");
 		animationDrawable.stop();
 		imageview_play.setVisibility(View.VISIBLE);
@@ -425,17 +412,16 @@ public class RecordActivity extends Activity implements OnClickListener,
 		isMaxed = false;
 		isReMix = false;
 	}
-    /**
-     * 录音过程禁止其它控件执行
-     */
+
+	/**
+	 * 录音过程禁止其它控件执行
+	 */
 	private void pauseControl(boolean isPause) {
 		if (isPause) {
 			layout_record.setEnabled(true);
 			textview_action.setEnabled(true);
 			record_chronometer.setEnabled(true);
-		}
-		else
-		{
+		} else {
 
 			layout_record.setEnabled(false);
 			textview_action.setEnabled(false);
@@ -446,7 +432,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
+
 		Intent playerIntent = new Intent();
 		playerIntent.putExtra("PLAY_MSG", AppConstant.PlayerMsg.STOP_MSG);
 		playerIntent.setClass(mContext, PlayerService.class);
@@ -470,8 +456,7 @@ public class RecordActivity extends Activity implements OnClickListener,
 	public void exit() {
 		if (isExit == false) {
 			isExit = true;
-			Toast.makeText(getApplicationContext(), "再按一次退出程序",
-					Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_LONG).show();
 			mHandler.sendEmptyMessageDelayed(0, 3000);
 		} else {
 
@@ -501,9 +486,9 @@ public class RecordActivity extends Activity implements OnClickListener,
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			// TODO Auto-generated method stub
+
 			textview_music_name.setText("歌曲：" + ApiConfigs.selectName);
-			
-		}	
+
+		}
 	};
 }

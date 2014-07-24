@@ -11,5 +11,6 @@
     <string name="title_activity_web_view">WebViewActivity</string>
     <string name="title_activity_listview_adapter">ListviewAdapterActivity</string>
     <string name="title_activity_grid_view">GridViewActivity</string>
+    <string name="title_activity_tabhost">TabHost演示</string>
 
 </resources>

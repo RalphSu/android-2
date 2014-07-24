@@ -52,7 +52,7 @@ public class Library_Newest_Activity extends Activity implements
 	 * 加载控件
 	 */
 	private void initView() {
-		// TODO Auto-generated method stub
+		
 		mPullDownView = (PullDownView) findViewById(R.id.pull_down_view);
 		mPullDownView.setOnPullDownListener(this);
 		// 不获取隐藏更新
@@ -67,7 +67,7 @@ public class Library_Newest_Activity extends Activity implements
 	 * 加载数据
 	 */
 	private void initData(int page) {
-		// TODO Auto-generated method stub
+		
 		biz.getRingList(mContext, page, 15, 2, resultHandler);
 	}
 
@@ -76,7 +76,7 @@ public class Library_Newest_Activity extends Activity implements
 	 */
 	@SuppressLint("HandlerLeak")
 	private void initHandler() {
-		// TODO Auto-generated method stub
+		
 		resultHandler = new Handler() {
 			@SuppressWarnings("unchecked")
 			@Override
@@ -122,7 +122,7 @@ public class Library_Newest_Activity extends Activity implements
 	 */
 	private void initListAdapter(List<HashMap<String, Object>> ringList,
 			ListView listview_hot) {
-		// TODO Auto-generated method stub
+		
 		if (null == adapter) {
 			adapter = new LibraryListAdapter(mContext, ringList);
 			listview_hot.setAdapter(adapter);
@@ -134,7 +134,7 @@ public class Library_Newest_Activity extends Activity implements
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-		// TODO Auto-generated method stub
+		
 		HashMap<String, Object> data = ringList.get(position);
 		ApiConfigs.selectId=String.valueOf(data.get("id"));
 		ApiConfigs.selectName=String.valueOf(data.get("musicName"));
@@ -149,7 +149,7 @@ public class Library_Newest_Activity extends Activity implements
 
 	@Override
 	public void onRefresh() {
-		// TODO Auto-generated method stub
+		
 		new Thread(new Runnable() {
 
 			@Override
@@ -169,7 +169,7 @@ public class Library_Newest_Activity extends Activity implements
 
 	@Override
 	public void onMore() {
-		// TODO Auto-generated method stub
+		
 		new Thread(new Runnable() {
 
 			@Override

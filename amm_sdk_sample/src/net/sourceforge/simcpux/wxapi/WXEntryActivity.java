@@ -129,7 +129,6 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler{
 			result = R.string.errcode_unknown;
 			break;
 		}
-		
 		Toast.makeText(this, result, Toast.LENGTH_LONG).show();
 	}
 	

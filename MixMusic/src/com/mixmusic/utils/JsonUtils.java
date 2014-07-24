@@ -3,11 +3,9 @@ package com.mixmusic.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import android.content.Context;
 import android.widget.Toast;
 
@@ -19,9 +17,7 @@ public class JsonUtils {
 	 * @param jsonStr
 	 * @return
 	 */
-	public static List<HashMap<String, Object>> getTempRingList(
-			Context context, String jsonStr) {
-		// TODO Auto-generated method stub
+	public static List<HashMap<String, Object>> getTempRingList(Context context, String jsonStr) {
 
 		List<HashMap<String, Object>> RingList = new ArrayList<HashMap<String, Object>>();
 
@@ -39,8 +35,7 @@ public class JsonUtils {
 					map.put("title", obj.getString("title"));
 					RingList.add(map);
 				}
-				System.out.println(">>>>-------getTempRingList:"
-						+ RingList.toString());
+				System.out.println(">>>>-------getTempRingList:" + RingList.toString());
 				return RingList;
 			} else {
 				DialogUtil.getInstance().ShowToast(context, msg);
@@ -60,16 +55,15 @@ public class JsonUtils {
 	 * @param jsonStr
 	 * @return
 	 */
-	public static List<HashMap<String, Object>> getMixSongList(Context context,
-			String jsonStr) {
-		// TODO Auto-generated method stub
+	public static List<HashMap<String, Object>> getMixSongList(Context context, String jsonStr) {
+
 		List<HashMap<String, Object>> RingList = new ArrayList<HashMap<String, Object>>();
 
 		try {
 			JSONObject jsonObj = new JSONObject(jsonStr);
 			int status = jsonObj.getInt("status");
 			String msg = jsonObj.getString("msg");
-//			int totalCount = jsonObj.getInt("totalCount");
+			// int totalCount = jsonObj.getInt("totalCount");
 			int pageSize = jsonObj.getInt("pageSize");
 			int currentPage = jsonObj.getInt("currentPage");
 			if (status == 1) {
@@ -90,8 +84,7 @@ public class JsonUtils {
 					map.put("contentType", obj.getString("contentType"));
 					RingList.add(map);
 				}
-				System.out.println(">>>>>>>>>>合成歌曲列表------getMixSongList:"
-						+ RingList.toString());
+				System.out.println(">>>>>>>>>>合成歌曲列表------getMixSongList:" + RingList.toString());
 				return RingList;
 			} else {
 				DialogUtil.getInstance().ShowToast(context, msg);
@@ -102,7 +95,7 @@ public class JsonUtils {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * 曲库列表
 	 * 
@@ -110,18 +103,14 @@ public class JsonUtils {
 	 * @param jsonStr
 	 * @return
 	 */
-	public static List<HashMap<String, Object>> getRingList(Context context,
-			String jsonStr) {
-		// TODO Auto-generated method stub
+	public static List<HashMap<String, Object>> getRingList(Context context, String jsonStr) {
+
 		List<HashMap<String, Object>> RingList = new ArrayList<HashMap<String, Object>>();
 
 		try {
 			JSONObject jsonObj = new JSONObject(jsonStr);
 			int status = jsonObj.getInt("status");
 			String msg = jsonObj.getString("msg");
-			int totalCount = jsonObj.getInt("totalCount");
-			int pageSize = jsonObj.getInt("pageSize");
-			int currentPage = jsonObj.getInt("currentPage");
 			if (status == 1) {
 				// 获取items列表数据
 				JSONArray jsonArray = jsonObj.getJSONArray("result");
@@ -137,14 +126,11 @@ public class JsonUtils {
 					map.put("contentType", obj.getString("contentType"));
 					RingList.add(map);
 				}
-				System.out.println(">>>>>>>>>>曲库列表------getRingList:"
-						+ RingList.toString());
 				return RingList;
 			} else {
 				DialogUtil.getInstance().ShowToast(context, msg);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return null;

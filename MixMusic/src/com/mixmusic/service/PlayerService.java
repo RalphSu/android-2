@@ -1,15 +1,12 @@
 package com.mixmusic.service;
 
-import java.io.File;
-
-import com.mixmusic.biz.AppConstant;
-
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Environment;
 import android.os.IBinder;
+
+import com.mixmusic.biz.AppConstant;
 
 public class PlayerService extends Service {
 

@@ -51,7 +51,6 @@ public class SendToWXActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		api = WXAPIFactory.createWXAPI(this, Constants.APP_ID);
-		
 		setContentView(R.layout.send_to_wx);
 		initView();
 	}

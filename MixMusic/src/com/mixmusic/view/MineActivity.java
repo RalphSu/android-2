@@ -2,14 +2,6 @@ package com.mixmusic.view;
 
 import java.util.HashMap;
 import java.util.List;
-
-import com.mixmusic.R;
-import com.mixmusic.adapter.FindListAdapter;
-import com.mixmusic.adapter.MineListAdapter;
-import com.mixmusic.biz.BizManager;
-import com.mixmusic.listview.refresh.PullDownView;
-import com.mixmusic.listview.refresh.PullDownView.OnPullDownListener;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -18,13 +10,22 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import com.mixmusic.R;
+import com.mixmusic.adapter.MineListAdapter;
+import com.mixmusic.biz.BizManager;
+import com.mixmusic.listview.refresh.PullDownView;
+import com.mixmusic.listview.refresh.PullDownView.OnPullDownListener;
+import com.mixmusic.receiver.Constants;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 public class MineActivity extends Activity implements OnPullDownListener,
 		OnItemClickListener {
 
 	private final static String TAG = "Library_Hot_Activity";
+	IWXAPI api;
 	private Context mContext;
 	private Handler resultHandler;
 	private PullDownView mPullDownView;
@@ -41,6 +42,7 @@ public class MineActivity extends Activity implements OnPullDownListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mine_main);
 		mContext = MineActivity.this;
+		api= WXAPIFactory.createWXAPI(this, Constants.APP_ID);
 		initView();
 		initHandler();
 		initData(index);
@@ -50,7 +52,7 @@ public class MineActivity extends Activity implements OnPullDownListener,
 	 * 加载控件
 	 */
 	private void initView() {
-		// TODO Auto-generated method stub
+		
 		mPullDownView = (PullDownView) findViewById(R.id.pull_down_view);
 		mPullDownView.setOnPullDownListener(this);
 		// 不获取隐藏更新
@@ -65,7 +67,7 @@ public class MineActivity extends Activity implements OnPullDownListener,
 	 * 加载数据
 	 */
 	private void initData(int page) {
-		// TODO Auto-generated method stub
+		
 		biz.getMySongList(mContext, page, 15, resultHandler);
 	}
 
@@ -74,7 +76,7 @@ public class MineActivity extends Activity implements OnPullDownListener,
 	 */
 	@SuppressLint("HandlerLeak")
 	private void initHandler() {
-		// TODO Auto-generated method stub
+		
 		resultHandler = new Handler() {
 			@SuppressWarnings("unchecked")
 			@Override
@@ -120,9 +122,9 @@ public class MineActivity extends Activity implements OnPullDownListener,
 	 */
 	private void initListAdapter(List<HashMap<String, Object>> ringList,
 			ListView listview_hot) {
-		// TODO Auto-generated method stub
+		
 		if (null == adapter) {
-			adapter = new MineListAdapter(mContext, ringList);
+			adapter = new MineListAdapter(mContext,api, ringList);
 			listview_hot.setAdapter(adapter);
 
 			listview_hot.setOnItemClickListener(new OnItemClickListener() {
@@ -140,13 +142,13 @@ public class MineActivity extends Activity implements OnPullDownListener,
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public void onRefresh() {
-		// TODO Auto-generated method stub
+		
 		new Thread(new Runnable() {
 
 			@Override
@@ -166,7 +168,7 @@ public class MineActivity extends Activity implements OnPullDownListener,
 
 	@Override
 	public void onMore() {
-		// TODO Auto-generated method stub
+		
 		new Thread(new Runnable() {
 
 			@Override

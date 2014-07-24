@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
+            android:text="ddd"
             android:gravity="left"
             android:padding="4dp" />
 
@@ -28,9 +29,9 @@
             android:layout_height="22dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
-            android:background="@drawable/list_play"
+            android:background="@drawable/list_stop"
             android:padding="40dp"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/textview_song"

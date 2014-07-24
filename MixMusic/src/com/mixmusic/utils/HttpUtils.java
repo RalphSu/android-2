@@ -1,12 +1,7 @@
 package com.mixmusic.utils;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.security.KeyStore;
 import java.util.Iterator;
@@ -36,7 +31,6 @@ import org.apache.http.util.EntityUtils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 
 /**
  * 网络工具类
@@ -52,8 +46,7 @@ public class HttpUtils {
 	 * @return true, 可用； false， 不可用
 	 */
 	public static boolean isOpenNetwork(Context context) {
-		ConnectivityManager connManager = (ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
+		ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (connManager.getActiveNetworkInfo() != null) {
 			return connManager.getActiveNetworkInfo().isAvailable();
 		}
@@ -61,7 +54,6 @@ public class HttpUtils {
 		return false;
 	}
 
-	
 	/**
 	 * get请求
 	 * 
@@ -79,14 +71,11 @@ public class HttpUtils {
 
 				urlBuilder.append("?");
 
-				Iterator<Entry<String, String>> iterator = params.entrySet()
-						.iterator();
+				Iterator<Entry<String, String>> iterator = params.entrySet().iterator();
 
 				while (iterator.hasNext()) {
 					Entry<String, String> param = iterator.next();
-					urlBuilder
-							.append(URLEncoder.encode(param.getKey(), "UTF-8"))
-							.append('=')
+					urlBuilder.append(URLEncoder.encode(param.getKey(), "UTF-8")).append('=')
 							.append(URLEncoder.encode(param.getValue(), "UTF-8"));
 					if (iterator.hasNext()) {
 						urlBuilder.append('&');
@@ -97,19 +86,17 @@ public class HttpUtils {
 			HttpClient client = getNewHttpClient();
 			// 发送get请求创建HttpGet对象
 			HttpGet getMethod = new HttpGet(urlBuilder.toString());
-			System.out.println("-------------------urlBuilder.toString():"+urlBuilder.toString());
+			System.out.println("-------------------urlBuilder.toString():" + urlBuilder.toString());
 			HttpResponse response = client.execute(getMethod);
 			// 获取状态码
 			int res = response.getStatusLine().getStatusCode();
-			if (res == 200) { 
+			if (res == 200) {
 
 				StringBuilder builder = new StringBuilder();
 				// 获取响应内容
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(response.getEntity().getContent()));
+				BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
-				for (String s = reader.readLine(); s != null; s = reader
-						.readLine()) {
+				for (String s = reader.readLine(); s != null; s = reader.readLine()) {
 					builder.append(s);
 				}
 				return builder.toString();
@@ -127,8 +114,7 @@ public class HttpUtils {
 	 * @param params
 	 * @return
 	 */
-	public static String postRequest(String urlString,
-			List<BasicNameValuePair> params) {
+	public static String postRequest(String urlString, List<BasicNameValuePair> params) {
 
 		try {
 			// 1. 创建HttpClient对象
@@ -158,8 +144,7 @@ public class HttpUtils {
 
 	private static HttpClient getNewHttpClient() {
 		try {
-			KeyStore trustStore = KeyStore.getInstance(KeyStore
-					.getDefaultType());
+			KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
 			trustStore.load(null, null);
 
 			SSLSocketFactory sf = new SSLSocketFactoryEx(trustStore);
@@ -170,12 +155,10 @@ public class HttpUtils {
 			HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
 
 			SchemeRegistry registry = new SchemeRegistry();
-			registry.register(new Scheme("http", PlainSocketFactory
-					.getSocketFactory(), 80));
+			registry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
 			registry.register(new Scheme("https", sf, 443));
 
-			ClientConnectionManager ccm = new ThreadSafeClientConnManager(
-					params, registry);
+			ClientConnectionManager ccm = new ThreadSafeClientConnManager(params, registry);
 
 			return new DefaultHttpClient(ccm, params);
 		} catch (Exception e) {
