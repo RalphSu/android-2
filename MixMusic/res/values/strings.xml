@@ -24,6 +24,12 @@
     <string name="testText">显示文字</string>
 
     
+     <string name="app_cancel">取消</string>
+     <string name="share_wx">分享至微信</string>
+     <string-array name="share_type">
+         <item>分享给微信好友</item>
+         <item>分享至朋友圈</item>
+     </string-array>
    
     
 </resources>

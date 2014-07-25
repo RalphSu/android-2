@@ -10,7 +10,6 @@ import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +19,12 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.mixmusic.R;
 import com.mixmusic.biz.AppConstant;
 import com.mixmusic.biz.BizManager;
 import com.mixmusic.service.PlayerService;
 import com.mixmusic.utils.DialogUtil;
+import com.mixmusic.utils.MMAlert;
 import com.mixmusic.utils.Util;
 import com.mixmusic.utils.ViewUtil;
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
@@ -41,6 +40,7 @@ public class MineListAdapter extends BaseAdapter {
 	private int current = -1;
 	private int currMoreItemIndex = -1;
 	private List<HashMap<String, Object>> data;
+	private SendMessageToWX.Req req;
 	// 重新获取数据
 	private Handler loadHandler = new Handler() {
 		@Override
@@ -80,6 +80,7 @@ public class MineListAdapter extends BaseAdapter {
 	public MineListAdapter(Context context, IWXAPI api,List<HashMap<String, Object>> data) {
 		this.context = context;
 		this.data = data;
+		this.api=api;
 	}
 
 	public void setData(List<HashMap<String, Object>> data) {
@@ -224,15 +225,14 @@ public class MineListAdapter extends BaseAdapter {
 			case 1:
 				break;
 			case 2:
-				//share(info);
-				Toast.makeText(context, "APPID申请中，敬请期待.....^_^", Toast.LENGTH_LONG).show();
+				share(info);
+				//Toast.makeText(context, "APPID申请中，敬请期待.....^_^", Toast.LENGTH_LONG).show();
 				break;
 			}
 		}
 	}
 
 	private void share(HashMap<String, Object> info) {
-		
 		WXMusicObject music = new WXMusicObject();
 		music.musicUrl=info.get("songUrl").toString();
 
@@ -240,16 +240,35 @@ public class MineListAdapter extends BaseAdapter {
 		msg.mediaObject = music;
 		msg.title = info.get("songName").toString();
 		msg.description = "我自己合成的音乐,呵呵";
-		Log.i("myapp", "==========>"+msg.title);
 
 		Bitmap thumb = BitmapFactory.decodeResource(context.getResources(), R.drawable.send_music_thumb);
 		msg.thumbData = Util.bmpToByteArray(thumb, true);
 
-		SendMessageToWX.Req req = new SendMessageToWX.Req();
+		req = new SendMessageToWX.Req();
 		req.transaction = buildTransaction("music");
 		req.message = msg;
-		req.scene =    SendMessageToWX.Req.WXSceneSession;//SendMessageToWX.Req.WXSceneTimeline
-		api.sendReq(req);
+		
+		MMAlert.showAlert(context, context.getString(R.string.share_wx), context.getResources().getStringArray(R.array.share_type), null, new MMAlert.OnAlertSelectId() {
+			
+			@Override
+			public void onClick(int whichButton) {
+				switch (whichButton) {
+				case 0:
+					req.scene =    SendMessageToWX.Req.WXSceneSession;//SendMessageToWX.Req.WXSceneTimeline
+					api.sendReq(req);
+					break;
+
+				case 1:
+					req.scene =    SendMessageToWX.Req.WXSceneTimeline;
+					api.sendReq(req);
+					break;
+				default:
+					break;
+				}
+				
+			}
+		});
+		
 		
 	}
 

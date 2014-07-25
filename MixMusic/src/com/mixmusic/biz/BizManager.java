@@ -66,7 +66,6 @@ public class BizManager {
 				return filePath;
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 
@@ -145,7 +144,6 @@ public class BizManager {
 
 					String jsonStr = HttpUtils.getRequest(ApiConfigs.loginLink, params);
 					if (jsonStr.length() > 0) {
-						System.out.println(">>>>>>>>>>getLogin:" + jsonStr);
 						JSONObject jsonObj;
 						try {
 							jsonObj = new JSONObject(jsonStr);
@@ -338,7 +336,6 @@ public class BizManager {
 					String jsonStr = HttpUtils.getRequest(ApiConfigs.requestLink + "compoundSongAgain", params);
 					if (jsonStr.length() > 0) {
 						JSONObject jsonObj;
-						System.out.println(">>>>>>>>>>---------reMixMusic重新合成请求：" + jsonStr);
 						try {
 							jsonObj = new JSONObject(jsonStr);
 							int status = jsonObj.getInt("status");
@@ -390,7 +387,6 @@ public class BizManager {
 					String jsonStr = HttpUtils.getRequest(ApiConfigs.requestLink + "getSongResStatus", params);
 					if (jsonStr.length() > 0) {
 						JSONObject jsonObj;
-						System.out.println(">>>>>>>>>>---------checkMixMusic合成音乐查询：" + jsonStr);
 						try {
 							jsonObj = new JSONObject(jsonStr);
 							int status = jsonObj.getInt("status");
@@ -437,7 +433,6 @@ public class BizManager {
 
 					String jsonStr = HttpUtils.getRequest(ApiConfigs.requestLink + "setClickPraiseNum", params);
 					if (jsonStr.length() > 0) {
-						System.out.println(">>>>>>>>>>setPraise:" + jsonStr);
 						JSONObject jsonObj;
 						try {
 							jsonObj = new JSONObject(jsonStr);
@@ -478,7 +473,6 @@ public class BizManager {
 					String jsonStr = HttpUtils.getRequest(ApiConfigs.requestLink + "save", params);
 					if (jsonStr.length() > 0) {
 						JSONObject jsonObj;
-						System.out.println(">>>>>>>>>>---------save保存并改名：" + jsonStr);
 						try {
 							jsonObj = new JSONObject(jsonStr);
 							int status = jsonObj.getInt("status");
@@ -531,7 +525,6 @@ public class BizManager {
 					String jsonStr = HttpUtils.getRequest(ApiConfigs.requestLink + "delete", params);
 					if (jsonStr.length() > 0) {
 						JSONObject jsonObj;
-						System.out.println(">>>>>>>>>>---------delete删除用户歌曲：" + jsonStr);
 						try {
 							jsonObj = new JSONObject(jsonStr);
 							int status = jsonObj.getInt("status");

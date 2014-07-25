@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
-
 import com.mixmusic.biz.AppConstant;
 
 public class PlayerService extends Service {
@@ -15,18 +14,16 @@ public class PlayerService extends Service {
 
 	@Override
 	public IBinder onBind(Intent arg0) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		// TODO Auto-generated method stub
+
 		String PLAY_URL = intent.getStringExtra("PLAY_URL");
 		int PLAY_MSG = intent.getIntExtra("PLAY_MSG", 0);
 
-		System.out.println("------PLAY_URL:" + PLAY_URL + "------PLAY_MSG:"
-				+ PLAY_MSG);
 		if (PLAY_URL != null) {
 			if (PLAY_MSG == AppConstant.PlayerMsg.PLAY_MSG) {
 				play(PLAY_URL);
@@ -38,8 +35,7 @@ public class PlayerService extends Service {
 					stop();
 				}
 			}
-		}
-		else if (PLAY_MSG==3) {
+		} else if (PLAY_MSG == 3) {
 			stop();
 		}
 		return super.onStartCommand(intent, flags, startId);
@@ -54,6 +50,7 @@ public class PlayerService extends Service {
 			}
 		}
 		mediaPlayer = MediaPlayer.create(this, Uri.parse(url));
+		
 		mediaPlayer.setLooping(true);
 		mediaPlayer.start();
 		isPlaying = true;
@@ -96,7 +93,6 @@ public class PlayerService extends Service {
 
 	@Override
 	public void onDestroy() {
-		// TODO Auto-generated method stub
 
 		super.onDestroy();
 	}

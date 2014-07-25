@@ -88,10 +88,6 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.mixmusic.view.WavActivity"
-            android:configChanges="fontScale"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.mixmusic.view.DemoActivity"
             android:configChanges="fontScale"
             android:screenOrientation="portrait" />

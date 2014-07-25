@@ -181,12 +181,10 @@ public class RecordActivity extends Activity implements OnClickListener, OnChron
 		};
 		uploadHandler = new Handler() {
 			@SuppressLint("HandlerLeak")
-			@SuppressWarnings("unchecked")
 			@Override
 			public void handleMessage(Message msg) {
 				progressBar.setVisibility(View.GONE);
 				if (msg.what == 1) {
-					System.out.println(">>>>>>----合成ID：" + msg.obj.toString());
 					textview_action.setText("正在合成...");
 					animationDrawable.start();
 					BizManager.getInstance().checkMixMusic(mContext, msg.obj.toString(), "amr", mixHandler);
@@ -205,7 +203,6 @@ public class RecordActivity extends Activity implements OnClickListener, OnChron
 			public void handleMessage(Message msg) {
 				if (msg.what == 1) {
 					// 获得播放地址
-					System.out.println(">>>>>>----播放地playUrl：" + msg.obj.toString());
 					playUrl = msg.obj.toString();
 					mixed();
 				} else {
@@ -226,7 +223,6 @@ public class RecordActivity extends Activity implements OnClickListener, OnChron
 			public void handleMessage(Message msg) {
 				if (msg.what == 1) {
 					// 获得播放地址
-					System.out.println(">>>>>>----保存：" + msg.obj.toString());
 					DialogUtil.getInstance().ShowToast(mContext, "保存成功");
 				} else {
 					DialogUtil.getInstance().ShowToast(mContext, "保存失败，请重试");

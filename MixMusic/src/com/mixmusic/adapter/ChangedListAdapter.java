@@ -2,31 +2,21 @@ package com.mixmusic.adapter;
 
 import java.util.HashMap;
 import java.util.List;
-
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.mixmusic.R;
 import com.mixmusic.biz.ApiConfigs;
 import com.mixmusic.biz.AppConstant;
 import com.mixmusic.service.PlayerService;
-import com.mixmusic.utils.DialogUtil;
-import com.mixmusic.view.FindActivity;
-
-import android.R.bool;
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Handler;
-import android.os.Message;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class ChangedListAdapter extends BaseAdapter {
 

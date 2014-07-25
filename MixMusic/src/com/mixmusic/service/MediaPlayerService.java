@@ -1,20 +1,14 @@
 package com.mixmusic.service;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-
-import com.mixmusic.biz.PlayerConfigs;
-
 import android.app.Service;
 import android.content.Intent;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.IBinder;
+import com.mixmusic.biz.PlayerConfigs;
 
-public class MediaPlayerService extends Service implements Runnable,
-		MediaPlayer.OnCompletionListener {
+public class MediaPlayerService extends Service implements Runnable, MediaPlayer.OnCompletionListener {
 	/* 定于一个多媒体对象 */
 	public static MediaPlayer mMediaPlayer = null;
 	// 是否单曲循环
@@ -50,8 +44,6 @@ public class MediaPlayerService extends Service implements Runnable,
 			mMediaPlayer.release();
 			mMediaPlayer = null;
 		}
-
-		System.out.println("service onDestroy");
 	}
 
 	/* 启动service时执行的方法 */
@@ -71,14 +63,12 @@ public class MediaPlayerService extends Service implements Runnable,
 				mMediaPlayer.start();
 			}
 		}
-		if (PLAY_MSG == PlayerConfigs.STOP_MSG) 
-		{
+		if (PLAY_MSG == PlayerConfigs.STOP_MSG) {
 			mMediaPlayer.stop();
 		}
 		return super.onStartCommand(intent, flags, startId);
 	}
 
-	@SuppressWarnings("static-access")
 	public void playMusic(String playUrl) {
 		try {
 			/* 重置多媒体 */
@@ -86,21 +76,12 @@ public class MediaPlayerService extends Service implements Runnable,
 			/* 读取mp3文件 */
 			mMediaPlayer.setDataSource(MediaPlayerService.this,
 					Uri.parse("http://dl.118100.cn:9495/res/1388/mp3/00/21/29/1388002129000800.mp3"));
-//			mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-			
-			/* 准备播放 --异步缓存*/
-			mMediaPlayer.prepareAsync();  
-//			File file = new File(playUrl); 
-//			FileInputStream fis = new FileInputStream(file); 
-//			mMediaPlayer.setDataSource(fis.getFD()); 
-//			mMediaPlayer.prepare();
+			/* 准备播放 --异步缓存 */
+			mMediaPlayer.prepareAsync();
 			/* 开始播放 */
 			mMediaPlayer.start();
 			/* 是否单曲循环 */
 			mMediaPlayer.setLooping(isLoop);
-			// 设置进度条最大值
-			// TestMediaPlayer.audioSeekBar.setMax(PlayerService.mMediaPlayer
-			// .getDuration());
 			new Thread(this).start();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -122,23 +103,10 @@ public class MediaPlayerService extends Service implements Runnable,
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			// TestMediaPlayer.audioSeekBar.setProgress(CurrentPosition);
 		}
-
 	}
 
 	@Override
 	public void onCompletion(MediaPlayer mp) {
-		/* 播放完当前歌曲，自动播放下一首 */
-
-		// if (++TestMediaPlayer.currentListItme >= TestMediaPlayer.mMusicList
-		// .size()) {
-		// Toast.makeText(PlayerService.this, "已到最后一首歌曲", Toast.LENGTH_SHORT)
-		// .show();
-		// TestMediaPlayer.currentListItme--;
-		// TestMediaPlayer.audioSeekBar.setMax(0);
-		// } else {
-		// playMusic();
-		// }
 	}
 }
