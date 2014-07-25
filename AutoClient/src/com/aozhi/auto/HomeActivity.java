@@ -2,22 +2,29 @@ package com.aozhi.auto;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import com.umeng.analytics.MobclickAgent;
 
 public class HomeActivity extends Activity {
 	private Context mContext;
-
+	private TextView textView;
+	private static String TAG="myapptag";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		mContext = this;
+		textView=(TextView)findViewById(R.id.result_imei);
+		textView.setText(getDeviceInfo(mContext));
 		// 使用普通测试流程，打开调试模式
 		MobclickAgent.setDebugMode(true);
 
@@ -105,7 +112,7 @@ public class HomeActivity extends Activity {
 			}
 
 			json.put("device_id", device_id);
-
+			Log.i(TAG, "===>"+json.toString());
 			return json.toString();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -4,7 +4,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/result_tv"
+        android:id="@+id/result_imei"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/enter"
@@ -42,5 +42,6 @@
         android:onClick="onButtonClick"
         android:text="@string/um_event_end" >
     </Button>
+   
     
 </LinearLayout>
