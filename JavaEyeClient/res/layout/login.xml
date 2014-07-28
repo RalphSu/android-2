@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/loginbg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/username_field"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_x="55px"
+        android:layout_y="160px"
+        android:hint="输入用户名" />
+
+    <EditText
+        android:id="@+id/password_field"
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_x="55px"
+        android:layout_y="210px"
+        android:hint="输入密码"
+        android:inputType="textPassword" />
+
+    <ImageButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="55px"
+        android:layout_y="260px"
+        android:background="@drawable/ok" />
+
+    <ImageButton
+        android:id="@+id/login_canel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="165px"
+        android:layout_y="260px"
+        android:background="@drawable/canel" />
+
+</AbsoluteLayout>
