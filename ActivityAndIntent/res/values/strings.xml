@@ -42,10 +42,10 @@
     <string name="fmt_iap_err" formatted="false">网络连接不可用，请稍候重试</string>
     
     <string name="hello">Hello World, SDKSampleActivity!</string>
-    <string name="app_name">友盟测试</string>
+    <string name="app_name">SDKSample</string>
 	<string name="app_share">分享</string>
     
-    <string name="enter">这是SDK_Sample的入口界面</string>
+    <string name="enter">这是测试App的入口界面</string>
     <string name="reg">将该app注册到微信</string>
     <string name="goto_send">跳转到发消息界面</string>
     <string name="launch_wx">启动微信</string>

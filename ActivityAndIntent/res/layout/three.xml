@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/NavPage"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/result3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button31"
+        style="@style/MMLineActionButton"
+        android:onClick="onButtonClick"
+        android:text="返回第一个Activity" >
+    </Button>
+
+    
+</LinearLayout>
