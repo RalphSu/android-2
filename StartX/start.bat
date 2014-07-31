@@ -1,0 +1,2 @@
+java -cp ./lib/registry.jar;./lib/log4j-1.2.17.jar;./lib/slf4j-api-1.7.5.jar;./lib/slf4j-log4j12-1.7.5.jar;./lib/commons-io-2.4.jar;./lib/brushclient-1.0.jar com.aozhi.client.BrushClient ./run.properties
+pause
