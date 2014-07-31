@@ -35,15 +35,15 @@ public class BrushService {
 		int startIndex=getStartImeiIndex();
 		for(int i=startIndex;i<guidList.size();i++) {
 			String guid=guidList.get(i);
-			logger.info("======>修改IMEI: " + guid);
+			logger.info("======> 修改IMEI("+(i+1)+" : " + guid+")");
 			setUserGuid(guid);
-			logger.info("======>启动ADB服务");
+			logger.info("======> 启动ADB服务");
 			startAdbService();
-			logger.info("======>启动blueStacks");
+			logger.info("======> 启动blueStacks");
 			startBlueStacks();
-			logger.info("======>打开应用");
+			logger.info("======> 打开应用");
 			startApp();
-			logger.info("======>退出blueStacks");
+			logger.info("======> 退出blueStacks");
 			exitBlueStacks();
 		}
 	}
