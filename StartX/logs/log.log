@@ -1,0 +1,154 @@
+2014-07-30 09:52:16  [ main:0 ] - [ INFO ]  =======
+2014-07-30 10:49:47  [ main:0 ] - [ INFO ]  ===>,e12d04eb-2d86-4832-9a11-8ba1404faf79,
+2014-07-30 10:49:47  [ main:2 ] - [ INFO ]  ===>,2a15dfd2-e5cc-41ee-a95f-7bdadc942390,
+2014-07-30 10:49:47  [ main:2 ] - [ INFO ]  ===>,9376d269-f940-4ebe-9e60-df88c94c1ced,
+2014-07-30 10:49:47  [ main:2 ] - [ INFO ]  ===>,e12d04eb-2d86-4832-9a11-8ba1404faf79,
+2014-07-30 10:49:47  [ main:3 ] - [ INFO ]  ===>,2a15dfd2-e5cc-41ee-a95f-7bdadc942390,
+2014-07-30 10:49:47  [ main:3 ] - [ INFO ]  ===>,9376d269-f940-4ebe-9e60-df88c94c1ced,
+2014-07-30 10:49:47  [ main:3 ] - [ INFO ]  =======
+2014-07-30 10:55:03  [ main:0 ] - [ INFO ]  =======
+2014-07-30 10:59:39  [ main:0 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 10:59:39  [ main:24 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 10:59:39  [ main:27 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 10:59:39  [ main:32 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 10:59:39  [ main:36 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 10:59:39  [ main:40 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 10:59:39  [ main:90 ] - [ INFO ]  =======
+2014-07-30 11:00:29  [ main:1 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:00:29  [ main:4 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:00:29  [ main:6 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:00:29  [ main:8 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:00:29  [ main:10 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:00:29  [ main:11 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:00:29  [ main:15 ] - [ INFO ]  =======
+2014-07-30 11:01:00  [ main:0 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:00  [ main:4 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:00  [ main:6 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:00  [ main:8 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:00  [ main:10 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:00  [ main:11 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:00  [ main:16 ] - [ INFO ]  =======
+2014-07-30 11:01:12  [ main:0 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:12  [ main:4 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:12  [ main:5 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:12  [ main:6 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:12  [ main:8 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:12  [ main:9 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:12  [ main:12 ] - [ INFO ]  =======
+2014-07-30 11:01:29  [ main:1 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:29  [ main:4 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:29  [ main:6 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:29  [ main:7 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:29  [ main:8 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:29  [ main:9 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:01:29  [ main:12 ] - [ INFO ]  =======
+2014-07-30 11:02:12  [ main:0 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:02:12  [ main:4 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:02:12  [ main:6 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:02:12  [ main:6 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:02:12  [ main:7 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:02:12  [ main:8 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:02:12  [ main:9 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:02:12  [ main:11 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:02:12  [ main:13 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:02:12  [ main:13 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:02:12  [ main:15 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:02:12  [ main:16 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:02:12  [ main:17 ] - [ INFO ]  =======
+2014-07-30 11:03:09  [ main:0 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:03:09  [ main:3 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:03:09  [ main:5 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:03:09  [ main:6 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:03:09  [ main:7 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:03:09  [ main:7 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:03:09  [ main:9 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:03:09  [ main:12 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:03:09  [ main:13 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:03:09  [ main:14 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:03:09  [ main:15 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:03:09  [ main:15 ] - [ ERROR ]  Cannot run program "C:/Program": CreateProcess error=2, ?????????
+2014-07-30 11:03:09  [ main:17 ] - [ INFO ]  =======
+2014-07-30 11:14:29  [ main:0 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:14:29  [ main:393 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:14:29  [ main:396 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:14:29  [ main:426 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:14:29  [ main:453 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:14:29  [ main:466 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:14:29  [ main:471 ] - [ INFO ]  =======
+2014-07-30 11:15:05  [ main:0 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:15:05  [ main:51 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:15:05  [ main:55 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:15:05  [ main:60 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:15:05  [ main:66 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:15:05  [ main:92 ] - [ INFO ]  C:/Program Files (x86)/BlueStacks/HD-StartLauncher.exe
+2014-07-30 11:15:05  [ main:98 ] - [ INFO ]  =======
+2014-07-30 11:42:22  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 11:42:22  [ main:8 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 11:42:22  [ main:11 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 11:42:52  [ main:30121 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 11:42:56  [ main:34188 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 11:43:06  [ main:44260 ] - [ INFO ]  ======>
+2014-07-30 11:43:14  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 11:43:14  [ main:9 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 11:43:14  [ main:14 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 11:43:44  [ main:30067 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 11:43:48  [ main:34122 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 11:43:58  [ main:44122 ] - [ INFO ]  ======>
+2014-07-30 11:45:21  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 11:45:21  [ main:10 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 11:45:21  [ main:13 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 11:45:49  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 11:45:49  [ main:9 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 11:45:49  [ main:12 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 11:45:52  [ main:3012 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 11:45:56  [ main:7078 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 11:46:19  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 11:46:19  [ main:8 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 11:46:19  [ main:12 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 11:46:22  [ main:3012 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 11:46:26  [ main:7081 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 11:55:48  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 11:55:48  [ main:9 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 11:55:48  [ main:13 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 11:55:51  [ main:3013 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 11:55:55  [ main:7026 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 14:29:07  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 14:29:07  [ main:329 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 14:29:07  [ main:368 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 14:29:11  [ main:3758 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 14:29:15  [ main:7939 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 14:42:36  [ main:1 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 14:42:36  [ main:158 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 14:42:36  [ main:175 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 14:42:39  [ main:3176 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 14:42:43  [ main:7227 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 14:42:57  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 14:42:57  [ main:9 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 14:42:57  [ main:13 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 14:43:00  [ main:3038 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 14:43:04  [ main:7190 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 14:53:36  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 14:53:36  [ main:10 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 14:53:36  [ main:13 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 14:53:40  [ main:4077 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 14:53:45  [ main:9036 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 14:54:59  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 14:54:59  [ main:9 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 14:54:59  [ main:12 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 14:55:02  [ main:3012 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 14:55:07  [ main:7380 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 14:56:47  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 14:56:47  [ main:9 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 14:56:47  [ main:14 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 14:56:50  [ main:3637 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 14:56:55  [ main:7983 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 14:57:49  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 14:57:49  [ main:9 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 14:57:49  [ main:13 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 14:57:52  [ main:3050 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 14:57:56  [ main:7413 ] - [ INFO ]  ======>退出blueStacks
+2014-07-30 14:58:08  [ main:0 ] - [ INFO ]  ======> 加载启动参数
+2014-07-30 14:58:08  [ main:9 ] - [ INFO ]  ======> 加载GUID文件
+2014-07-30 14:58:08  [ main:13 ] - [ INFO ]  ======>启动blueStacks
+2014-07-30 14:58:11  [ main:3047 ] - [ INFO ]  ==========>打开应用: com.demo.app1/.activity.AppMain
+2014-07-30 14:58:15  [ main:7392 ] - [ INFO ]  ======>退出blueStacks

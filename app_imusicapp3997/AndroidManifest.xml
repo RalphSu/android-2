@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aozhi.auto"
+    package="com.demo.app1"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.1.2" >
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -25,24 +25,28 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".HomeActivity"
+            android:name=".activity.AppMain"
             android:exported="true"
-            android:label="@string/app_name" 
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.AppcloudActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
 
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="53d1c7a556240b994502d52b" >
+            android:value="539805cc56240b7994037521" >
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="fengcao" >
+            android:value="weibo" >
         </meta-data>
     </application>
 
