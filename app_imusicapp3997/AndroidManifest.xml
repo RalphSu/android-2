@@ -4,7 +4,7 @@
     android:versionName="1.1.2" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="8"
         android:targetSdkVersion="18" />
     <!-- ACCESS_NETWORK_STATE(必须)	检测联网方式，区分用户设备使用的是2G、3G或是WiFi -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

@@ -9,7 +9,7 @@ public class BrushClient {
 	public static void main(String[] args) {
 		logger.info("启动刷机程序...");
 		 BrushService service=new BrushService();
-		 service.start(args);
+		 service.start2(args);
 		logger.info("退出刷机程序!");
 	}
 }

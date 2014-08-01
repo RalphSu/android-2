@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.aozhi.client.util.PropertiesLoder;
@@ -46,6 +47,19 @@ public class BrushService {
 			logger.info("======> 退出blueStacks");
 			exitBlueStacks();
 		}
+	}
+	public void start2(String[] args) {
+		logger.info("======> 加载启动参数");
+		loadProperties(args);
+		logger.info("======> 加载IMEI文件");
+		loadImeiFiles();
+		logger.info("======> 加载当前注册表的IMEI");
+			logger.info("======> 启动ADB服务");
+			startAdbService();
+			logger.info("======> 启动blueStacks");
+			//startBlueStacks();
+			logger.info("======> 退出blueStacks");
+			exitBlueStacks();
 	}
 
 	/**
@@ -173,4 +187,27 @@ public class BrushService {
 
 		return buf.toString();
 	}
+
+public static void pull(){//手机到android
+		String cmd="adb pull default.prop c:\\test.txt ";
+		Process p;
+		try {
+			p = Runtime.getRuntime().exec(cmd);
+			System.out.println(":::::::::::::::::::::::::::::::::::::::::>>>>>>");
+			p.waitFor();
+			Scanner sc = new Scanner(p.getErrorStream());
+			if(sc.hasNext())
+				System.out.println(sc.next());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+public static void main(String[] args) {
+	pull();
+}
+
 }
