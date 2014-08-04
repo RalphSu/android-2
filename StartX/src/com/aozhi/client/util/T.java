@@ -9,18 +9,20 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
 public class T {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		n2();
+		System.exit(0);
 	}
 
 	public static void n1() {
 		try {
 
-			Process process = Runtime.getRuntime().exec("cmd.exe");
+			Process process = Runtime.getRuntime().exec("cmd.exe /c start dir");
 			OutputStream outputStream = process.getOutputStream();
 			final InputStream inputStream = process.getInputStream();
 			new Thread(new Runnable() {
 				byte[] cache = new byte[1024];
+
 				public void run() {
 					System.out.println("listener started");
 					try {

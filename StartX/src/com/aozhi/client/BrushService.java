@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.aozhi.client.util.PropertiesLoder;
 import com.aozhi.client.util.RegistryUtil;
+
 /**
  * 
  * @author wuyicun
@@ -33,10 +34,10 @@ public class BrushService {
 		logger.info("======> 加载IMEI文件");
 		loadImeiFiles();
 		logger.info("======> 加载当前注册表的IMEI");
-		int startIndex=getStartImeiIndex();
-		for(int i=startIndex;i<guidList.size();i++) {
-			String guid=guidList.get(i);
-			logger.info("======> 修改IMEI("+(i+1)+" : " + guid+")");
+		int startIndex = getStartImeiIndex();
+		for (int i = startIndex; i < guidList.size(); i++) {
+			String guid = guidList.get(i);
+			logger.info("======> 修改IMEI(" + (i + 1) + " : " + guid + ")");
 			setUserGuid(guid);
 			logger.info("======> 启动ADB服务");
 			startAdbService();
@@ -48,31 +49,35 @@ public class BrushService {
 			exitBlueStacks();
 		}
 	}
+
 	public void start2(String[] args) {
 		logger.info("======> 加载启动参数");
 		loadProperties(args);
 		logger.info("======> 加载IMEI文件");
 		loadImeiFiles();
 		logger.info("======> 加载当前注册表的IMEI");
-			logger.info("======> 启动ADB服务");
-			startAdbService();
-			logger.info("======> 启动blueStacks");
-			//startBlueStacks();
-			logger.info("======> 退出blueStacks");
-			exitBlueStacks();
+		logger.info("======> 启动ADB服务");
+		//startAdbService();
+		logger.info("======> 启动blueStacks");
+		//startBlueStacks();
+		//logger.info("======> 退出blueStacks");
+		// exitBlueStacks();
+		
+		pull();
 	}
 
 	/**
 	 * 获取启动时的IMEI
+	 * 
 	 * @return
 	 */
 	private int getStartImeiIndex() {
-		int startIndex=0;
-		String current=RegistryUtil.getGUID();
+		int startIndex = 0;
+		String current = RegistryUtil.getGUID();
 		if (guidList.contains(current)) {
-			int index=guidList.indexOf(current);
-			if (index+1!=guidList.size()) {
-				startIndex=index+1;
+			int index = guidList.indexOf(current);
+			if (index + 1 != guidList.size()) {
+				startIndex = index + 1;
 			}
 		}
 		return startIndex;
@@ -188,26 +193,25 @@ public class BrushService {
 		return buf.toString();
 	}
 
-public static void pull(){//手机到android
-		String cmd="adb pull default.prop c:\\test.txt ";
+	public static void pull() {// 手机到android
+		String cmd = "adb pull default.prop c:\\test.txt ";
+		cmd="cmd.exe /k ipconfig /all";
 		Process p;
 		try {
 			p = Runtime.getRuntime().exec(cmd);
 			System.out.println(":::::::::::::::::::::::::::::::::::::::::>>>>>>");
-			p.waitFor();
-			Scanner sc = new Scanner(p.getErrorStream());
-			if(sc.hasNext())
-				System.out.println(sc.next());
+			//p.waitFor();
+			/*Scanner sc = new Scanner(p.getErrorStream());
+			if (sc.hasNext())
+				System.out.println(sc.next());*/
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-public static void main(String[] args) {
-	pull();
-}
+
+	public static void main(String[] args) {
+		pull();
+	}
 
 }
