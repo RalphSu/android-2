@@ -1,0 +1,4 @@
+ su - 
+ mount -o remount rw /data
+ exit
+ exit

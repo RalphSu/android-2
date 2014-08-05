@@ -1,11 +1,10 @@
 package com.aozhi.client;
 
-import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
-import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.aozhi.client.util.PropertiesLoder;
@@ -59,29 +58,15 @@ public class BrushService {
 		logger.info("======> 启动ADB服务");
 		//startAdbService();
 		logger.info("======> 启动blueStacks");
-		//startBlueStacks();
-		//logger.info("======> 退出blueStacks");
+		// startBlueStacks();
+		logger.info("======> 修改blueStacks配置");
+		modifyProductName();
+		 logger.info("======> 退出blueStacks");
 		// exitBlueStacks();
-		
-		pull();
+
 	}
 
-	/**
-	 * 获取启动时的IMEI
-	 * 
-	 * @return
-	 */
-	private int getStartImeiIndex() {
-		int startIndex = 0;
-		String current = RegistryUtil.getGUID();
-		if (guidList.contains(current)) {
-			int index = guidList.indexOf(current);
-			if (index + 1 != guidList.size()) {
-				startIndex = index + 1;
-			}
-		}
-		return startIndex;
-	}
+	
 
 	/**
 	 * 启动ADB服务
@@ -91,6 +76,25 @@ public class BrushService {
 		delay(1);
 		runCommand(buildAdbCommand("start-server"));
 		delay(1);
+	}
+
+	/**
+	 * 修改机型名称
+	 */
+	public void modifyProductName() {
+		enterAdbShell();
+		runCommand(buildAdbCommand("push") + " d:\\bluestacks.prop /data/bluestacks.prop");
+	}
+
+	/**
+	 * 运行adb shell命令,重新挂载文件系统为可写
+	 */
+	private void enterAdbShell() {
+		try {
+			runCommand(buildAdbCommand("shell"), new FileInputStream("command.txt"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -142,21 +146,38 @@ public class BrushService {
 	}
 
 	private void runCommand(String cmd) {
+		Process process =null;
 		try {
 			logger.debug(" ------->执行命令:" + cmd);
-			StringBuffer buffer = new StringBuffer();
-			Process process = Runtime.getRuntime().exec(cmd);
-			InputStream fis = process.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-			String line = null;
-			String lineSeparator = System.getProperty("line.separator");
-			while ((line = br.readLine()) != null) {
-				buffer.append(line).append(lineSeparator);
-			}
-			logger.debug(buffer.toString());
+			process = Runtime.getRuntime().exec(cmd);
+			new InputStreamGobbler(process.getErrorStream(), "ERROR").start();
+			new InputStreamGobbler(process.getInputStream(), "OUTPUT").start();
+			int exitVal = process.waitFor();
+			logger.debug(" ------->执行命令返回代码:" + exitVal);
 		} catch (IOException e) {
 			logger.error(e.getMessage());
 			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}finally {
+			if (null!=process) {
+				process.destroy();
+			}
+		}
+	}
+
+	public void runCommand(String cmd, InputStream is) {
+		try {
+			Process proc = Runtime.getRuntime().exec(cmd);
+			new InputStreamGobbler(proc.getErrorStream(), "ERROR").start();
+			new InputStreamGobbler(proc.getInputStream(), "OUTPUT").start();
+			if (is != null) {
+				new OutputStreamGobbler(is, proc.getOutputStream()).start();
+			}
+			int exitVal = proc.waitFor();
+			logger.debug(" ------->执行命令返回代码:" + exitVal);
+		} catch (Throwable t) {
+			t.printStackTrace();
 		}
 	}
 
@@ -192,26 +213,21 @@ public class BrushService {
 
 		return buf.toString();
 	}
-
-	public static void pull() {// 手机到android
-		String cmd = "adb pull default.prop c:\\test.txt ";
-		cmd="cmd.exe /k ipconfig /all";
-		Process p;
-		try {
-			p = Runtime.getRuntime().exec(cmd);
-			System.out.println(":::::::::::::::::::::::::::::::::::::::::>>>>>>");
-			//p.waitFor();
-			/*Scanner sc = new Scanner(p.getErrorStream());
-			if (sc.hasNext())
-				System.out.println(sc.next());*/
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	
+	/**
+	 * 获取启动时的IMEI
+	 * 
+	 * @return
+	 */
+	private int getStartImeiIndex() {
+		int startIndex = 0;
+		String current = RegistryUtil.getGUID();
+		if (guidList.contains(current)) {
+			int index = guidList.indexOf(current);
+			if (index + 1 != guidList.size()) {
+				startIndex = index + 1;
+			}
 		}
+		return startIndex;
 	}
-
-	public static void main(String[] args) {
-		pull();
-	}
-
 }

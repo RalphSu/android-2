@@ -10,10 +10,10 @@ public class BadWinRedirect {
 			Runtime rt = Runtime.getRuntime();
 			Process proc = rt.exec("java jecho 'Hello World' > test.txt");
 			// any error message?
-			StreamGobbler errorGobbler = new StreamGobbler(proc.getErrorStream(), "ERROR");
+			InputStreamGobbler errorGobbler = new InputStreamGobbler(proc.getErrorStream(), "ERROR");
 
 			// any output?
-			StreamGobbler outputGobbler = new StreamGobbler(proc.getInputStream(), "OUTPUT");
+			InputStreamGobbler outputGobbler = new InputStreamGobbler(proc.getInputStream(), "OUTPUT");
 
 			// kick them off
 			errorGobbler.start();

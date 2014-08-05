@@ -11,5 +11,6 @@ public class BrushClient {
 		 BrushService service=new BrushService();
 		 service.start2(args);
 		logger.info("ÍË³öË¢»ú³ÌÐò!");
+		System.exit(0);
 	}
 }
