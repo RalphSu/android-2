@@ -31,7 +31,7 @@ class InputStreamGobbler extends Thread {
 			while ((line = br.readLine()) != null) {
 				buffer.append(line).append(lineSeparator);
 			}
-			logger.debug(buffer.toString());
+			logger.debug(type+":"+buffer.toString());
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}finally {

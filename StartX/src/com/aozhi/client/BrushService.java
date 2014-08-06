@@ -4,9 +4,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.aozhi.client.util.BluestacksPropService;
 import com.aozhi.client.util.PropertiesLoder;
 import com.aozhi.client.util.RegistryUtil;
 
@@ -22,9 +25,13 @@ public class BrushService {
 	private String ADB = null;
 	private String STARTLAUNCHER = "";
 	private String STOPLAUNCHER = "";
-	private List<String> guidList = null;
+	private String bluestackprop;
+	private String productFile;
+	private boolean isModifyProduct=false;
+	private Map<String,String[]> productMap = null;
 	private String[] RUNACTIVITYS = null;
-	private String[] FILES = null;
+	private String[] IMEIFILES = null;
+	private List<String> imeiList = null;
 	private final String separator = ",";
 
 	public void start(String[] args) {
@@ -32,10 +39,12 @@ public class BrushService {
 		loadProperties(args);
 		logger.info("======> 加载IMEI文件");
 		loadImeiFiles();
+		logger.info("======> 加载产品型号文件");
+		loadProductFiles();
 		logger.info("======> 加载当前注册表的IMEI");
 		int startIndex = getStartImeiIndex();
-		for (int i = startIndex; i < guidList.size(); i++) {
-			String guid = guidList.get(i);
+		for (int i = startIndex; i < imeiList.size(); i++) {
+			String guid = imeiList.get(i);
 			logger.info("======> 修改IMEI(" + (i + 1) + " : " + guid + ")");
 			setUserGuid(guid);
 			logger.info("======> 启动ADB服务");
@@ -54,13 +63,17 @@ public class BrushService {
 		loadProperties(args);
 		logger.info("======> 加载IMEI文件");
 		loadImeiFiles();
+		loadProductFiles();
 		logger.info("======> 加载当前注册表的IMEI");
 		logger.info("======> 启动ADB服务");
 		//startAdbService();
 		logger.info("======> 启动blueStacks");
 		// startBlueStacks();
-		logger.info("======> 修改blueStacks配置");
-		modifyProductName();
+		if (isModifyProduct) {
+			logger.info("======> 修改blueStacks配置");
+			
+			modifyProductName();
+		}
 		 logger.info("======> 退出blueStacks");
 		// exitBlueStacks();
 
@@ -83,7 +96,10 @@ public class BrushService {
 	 */
 	public void modifyProductName() {
 		enterAdbShell();
-		runCommand(buildAdbCommand("push") + " d:\\bluestacks.prop /data/bluestacks.prop");
+		BluestacksPropService propService=new BluestacksPropService(bluestackprop);
+		String[] para=productMap.get("2");
+		propService.generateBluestackProp(para[0], para[1]);
+		runCommand(buildAdbCommand("push") + bluestackprop+" /data/bluestacks.prop");
 	}
 
 	/**
@@ -127,12 +143,29 @@ public class BrushService {
 		STARTLAUNCHER = propertiesLoder.getProperty("BlueStacks.Start");
 		STOPLAUNCHER = propertiesLoder.getProperty("BlueStacks.Exit");
 		RUNACTIVITYS = propertiesLoder.getProperty("Run.Activitys").split(separator);
-		FILES = propertiesLoder.getProperty("GUID.FILES").split(separator);
+		IMEIFILES = propertiesLoder.getProperty("IMEI.FILES").split(separator);
+		String enable = propertiesLoder.getProperty("Product.enable");
+		if ("true".equalsIgnoreCase(enable)) {
+			isModifyProduct=true;
+			productFile = propertiesLoder.getProperty("Product.name");
+		}
+		bluestackprop=propertiesLoder.getProperty("BlueStacks.prop")+"/bulestacks.prop";
 	}
 
+	
 	private void loadImeiFiles() {
-
-		guidList = RegistryUtil.read(FILES);
+		imeiList = RegistryUtil.read(IMEIFILES);
+	}
+	
+	private void loadProductFiles() {
+		if (!isModifyProduct) {
+			return;
+		}
+		productMap=new HashMap<String, String[]>();
+		List<String> pList=RegistryUtil.read(productFile);
+		for (int i = 0; i < pList.size(); i++) {
+			productMap.put((i+1)+"", pList.get(i).split(separator));
+		}
 	}
 
 	/**
@@ -210,6 +243,7 @@ public class BrushService {
 		buf.append(ADB);
 		buf.append(" ");
 		buf.append(cmd);
+		buf.append(" ");
 
 		return buf.toString();
 	}
@@ -222,9 +256,9 @@ public class BrushService {
 	private int getStartImeiIndex() {
 		int startIndex = 0;
 		String current = RegistryUtil.getGUID();
-		if (guidList.contains(current)) {
-			int index = guidList.indexOf(current);
-			if (index + 1 != guidList.size()) {
+		if (imeiList.contains(current)) {
+			int index = imeiList.indexOf(current);
+			if (index + 1 != imeiList.size()) {
 				startIndex = index + 1;
 			}
 		}

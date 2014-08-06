@@ -5,15 +5,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class GenerateBluestacksProp {
+public class BluestacksPropService {
+	
+	private String filename;
+	public  BluestacksPropService(String filename) {
+		this.filename=filename;
+	}
 
-	public static String generate(String[] parms) {
-		String productName = "华为-B199";
-		String manufacturerName = "华为";
-		if (parms.length > 1) {
-			productName = parms[0];
-			manufacturerName = parms[1];
-		}
+	private String generate(String manufacturerName,String productName) {
 
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("# begin build properties").append("\r\n");
@@ -110,7 +109,7 @@ public class GenerateBluestacksProp {
 	 */
 	private void generateFile(String content) {
 		try {
-			File file = new File("bulestacks.prop");
+			File file = new File(filename);
 			if (!file.exists()) {
 				file.createNewFile();
 			}
@@ -123,19 +122,13 @@ public class GenerateBluestacksProp {
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * 生成bluestacks.prop文件
-	 * 
-	 * @param parms
-	 *            参数
-	 */
-	public void generateBluestackProp(String[] parms) {
-		String content = generate(parms);
+/**
+ *  生成bluestacks.prop文件
+ * @param manufacturer厂商
+ * @param product手机型号
+ */
+	public void generateBluestackProp(String manufacturerName,String productName ) {
+		String content = generate(manufacturerName,productName);
 		generateFile(content);
-	}
-	public static void main(String[] args) {
-		GenerateBluestacksProp cBluestacksProp=new GenerateBluestacksProp();
-		cBluestacksProp.generateBluestackProp(args);
 	}
 }
