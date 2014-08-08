@@ -93,7 +93,6 @@
             android:screenOrientation="portrait" />
 
         <service android:name="com.mixmusic.service.PlayerService" />
-        <service android:name=".service.MediaPlayerService" />
         <receiver
             android:name="com.mixmusic.receiver.AppRegister"
             android:permission="com.tencent.mm.plugin.permission.SEND" >

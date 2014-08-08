@@ -2,7 +2,6 @@ package com.aozhi.auto;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.umeng.analytics.MobclickAgent;
 
 public class HomeActivity extends Activity {
@@ -95,6 +93,9 @@ public class HomeActivity extends Activity {
 			android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) context
 					.getSystemService(Context.TELEPHONY_SERVICE);
 
+             String imsi = tm.getSubscriberId();    
+             String mtype = android.os.Build.MODEL; // 手机型号    
+             //String numer = tm.getLine1Number(); // 手机号码，有的可得，有的不可得   
 			String device_id = tm.getDeviceId();
 
 			android.net.wifi.WifiManager wifi = (android.net.wifi.WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -112,6 +113,10 @@ public class HomeActivity extends Activity {
 			}
 
 			json.put("device_id", device_id);
+			json.put("手机型号", mtype);
+			if (imsi!=null) {
+				json.put("IMSI", imsi);
+			}
 			Log.i(TAG, "===>"+json.toString());
 			return json.toString();
 		} catch (Exception e) {
