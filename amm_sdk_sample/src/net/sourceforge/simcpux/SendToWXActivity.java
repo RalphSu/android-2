@@ -208,7 +208,7 @@ public class SendToWXActivity extends Activity {
 				
 				MMAlert.showAlert(SendToWXActivity.this, getString(R.string.send_music),
 						SendToWXActivity.this.getResources().getStringArray(R.array.send_music_item),
-						null, new MMAlert.OnAlertSelectId(){
+						"testExit", new MMAlert.OnAlertSelectId(){
 
 					@Override
 					public void onClick(int whichButton) {						

@@ -1,24 +1,15 @@
-package net.sourceforge.simcpux.uikit;
+package com.aozhi.util.uikit;
 
 import java.util.ArrayList;
 import java.util.List;
-import net.sourceforge.simcpux.R;
-import net.sourceforge.simcpux.R.drawable;
-import net.sourceforge.simcpux.R.id;
-import net.sourceforge.simcpux.R.layout;
-import net.sourceforge.simcpux.R.string;
-import net.sourceforge.simcpux.R.style;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.MMAppMgr;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,11 +19,12 @@ import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+import com.aozhi.myplayer.R;
 
 public final class MMAlert {
 
@@ -86,7 +78,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final int msgId, final int titleId, final DialogInterface.OnClickListener l) {
+	public static AlertDialog showAlert(final Context context, final int msgId, final int titleId,
+			final DialogInterface.OnClickListener l) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -102,7 +95,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final String msg, final String title, final DialogInterface.OnClickListener l) {
+	public static AlertDialog showAlert(final Context context, final String msg, final String title,
+			final DialogInterface.OnClickListener l) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -118,7 +112,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final int msgId, final int titleId, final DialogInterface.OnClickListener lOk, final DialogInterface.OnClickListener lCancel) {
+	public static AlertDialog showAlert(final Context context, final int msgId, final int titleId,
+			final DialogInterface.OnClickListener lOk, final DialogInterface.OnClickListener lCancel) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -135,8 +130,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final int msg, final int title, final int yes, final int no, final DialogInterface.OnClickListener lOk,
-			final DialogInterface.OnClickListener lCancel) {
+	public static AlertDialog showAlert(final Context context, final int msg, final int title, final int yes, final int no,
+			final DialogInterface.OnClickListener lOk, final DialogInterface.OnClickListener lCancel) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -153,7 +148,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final String msg, final String title, final DialogInterface.OnClickListener lOk, final DialogInterface.OnClickListener lCancel) {
+	public static AlertDialog showAlert(final Context context, final String msg, final String title,
+			final DialogInterface.OnClickListener lOk, final DialogInterface.OnClickListener lCancel) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -170,8 +166,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final String msg, final String title, final String yes, final String no, final DialogInterface.OnClickListener lOk,
-			final DialogInterface.OnClickListener lCancel) {
+	public static AlertDialog showAlert(final Context context, final String msg, final String title, final String yes,
+			final String no, final DialogInterface.OnClickListener lOk, final DialogInterface.OnClickListener lCancel) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -188,7 +184,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final String title, final View view, final DialogInterface.OnClickListener lOk) {
+	public static AlertDialog showAlert(final Context context, final String title, final View view,
+			final DialogInterface.OnClickListener lOk) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -203,8 +200,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final String title, final View view, final String ok, final String cancel, final DialogInterface.OnClickListener lOk,
-			final DialogInterface.OnClickListener lCancel) {
+	public static AlertDialog showAlert(final Context context, final String title, final View view, final String ok,
+			final String cancel, final DialogInterface.OnClickListener lOk, final DialogInterface.OnClickListener lCancel) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -220,7 +217,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final String title, final String ok, final View view, final DialogInterface.OnClickListener lOk) {
+	public static AlertDialog showAlert(final Context context, final String title, final String ok, final View view,
+			final DialogInterface.OnClickListener lOk) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -235,8 +233,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final String title, final String msg, final View view, final DialogInterface.OnClickListener lOk,
-			final DialogInterface.OnClickListener lCancel) {
+	public static AlertDialog showAlert(final Context context, final String title, final String msg, final View view,
+			final DialogInterface.OnClickListener lOk, final DialogInterface.OnClickListener lCancel) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -262,7 +260,8 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showAlert(final Context context, final String title, final View view, final DialogInterface.OnCancelListener lCancel) {
+	public static AlertDialog showAlert(final Context context, final String title, final View view,
+			final DialogInterface.OnCancelListener lCancel) {
 		if (context instanceof Activity && ((Activity) context).isFinishing()) {
 			return null;
 		}
@@ -277,27 +276,13 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static Dialog showAlert(final Context context, final String title, final String[] items, String exit, final OnAlertSelectId alertDo) {
+	public static Dialog showAlert(final Context context, final String title, final String[] items, String exit,
+			final OnAlertSelectId alertDo) {
 		return showAlert(context, title, items, exit, alertDo, null);
 	}
 
-	public static ProgressDialog showProgressDlg(final Context context, final String title, final String message, final boolean indeterminate, final boolean cancelable, final OnCancelListener lCancel) {
-
-		MMAppMgr.activate(true);
-
-		return ProgressDialog.show(context, title, message, indeterminate, cancelable, new DialogInterface.OnCancelListener() {
-
-			@Override
-			public void onCancel(final DialogInterface dialog) {
-				if (lCancel != null) {
-					lCancel.onCancel(dialog);
-				}
-				MMAppMgr.activate(false);
-			}
-		});
-	}
-
-	public static AlertDialog showWebAlert(final Context context, final String title, final String rawUrl, final WebViewClient client, final DialogInterface.OnClickListener lOk,
+	public static AlertDialog showWebAlert(final Context context, final String title, final String rawUrl,
+			final WebViewClient client, final DialogInterface.OnClickListener lOk,
 			final DialogInterface.OnDismissListener lDismiss) {
 		final View view = View.inflate(context, R.layout.webalert, null);
 		final AlertDialog alert = showAlert(context, title, view, lOk);
@@ -319,8 +304,9 @@ public final class MMAlert {
 		return alert;
 	}
 
-	public static AlertDialog showWebAlert(final Context context, final String title, final String rawUrl, final WebViewClient client, final String ok, final String cancel,
-			final DialogInterface.OnClickListener lOk, final DialogInterface.OnClickListener lCancel, final DialogInterface.OnDismissListener lDismiss) {
+	public static AlertDialog showWebAlert(final Context context, final String title, final String rawUrl,
+			final WebViewClient client, final String ok, final String cancel, final DialogInterface.OnClickListener lOk,
+			final DialogInterface.OnClickListener lCancel, final DialogInterface.OnDismissListener lDismiss) {
 		final View view = View.inflate(context, R.layout.webalert, null);
 		final AlertDialog alert = showAlert(context, title, view, ok, cancel, lOk, lCancel);
 		alert.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -354,7 +340,8 @@ public final class MMAlert {
 	 *            Name can be null.It will be Red Color
 	 * @return A AlertDialog
 	 */
-	public static Dialog showAlert(final Context context, final String title, final String[] items, String exit, final OnAlertSelectId alertDo, OnCancelListener cancelListener) {
+	public static Dialog showAlert(final Context context, final String title, final String[] items, String exit,
+			final OnAlertSelectId alertDo, OnCancelListener cancelListener) {
 		String cancel = context.getString(R.string.app_cancel);
 		final Dialog dlg = new Dialog(context, R.style.MMTheme_DataSheet);
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -402,23 +389,23 @@ public final class MMAlert {
 }
 
 class AlertAdapter extends BaseAdapter {
-	private static final String TAG = "AlertAdapter";
 	public static final int TYPE_BUTTON = 0;
 	public static final int TYPE_TITLE = 1;
 	public static final int TYPE_EXIT = 2;
 	public static final int TYPE_CANCEL = 3;
 	private List<String> items;
 	private int[] types;
-	// private boolean isSpecial = false;
 	private boolean isTitle = false;
-	// private boolean isExit = false;
 	private Context context;
 
 	public AlertAdapter(Context context, String title, String[] items, String exit, String cancel) {
 		if (items == null || items.length == 0) {
 			this.items = new ArrayList<String>();
 		} else {
-			this.items = Util.stringsToList(items);
+			this.items = new ArrayList<String>();
+			for (String string : items) {
+				this.items.add(string);
+			}
 		}
 		this.types = new int[this.items.size() + 3];
 		this.context = context;
@@ -429,13 +416,11 @@ class AlertAdapter extends BaseAdapter {
 		}
 
 		if (exit != null && !exit.equals("")) {
-			// this.isExit = true;
 			types[this.items.size()] = TYPE_EXIT;
 			this.items.add(exit);
 		}
 
 		if (cancel != null && !cancel.equals("")) {
-			// this.isSpecial = true;
 			types[this.items.size()] = TYPE_CANCEL;
 			this.items.add(cancel);
 		}
@@ -481,6 +466,7 @@ class AlertAdapter extends BaseAdapter {
 			} else if (type == TYPE_EXIT) {
 				convertView = View.inflate(context, R.layout.alert_dialog_menu_list_layout_special, null);
 			}
+
 			// holder.view = (LinearLayout) convertView.findViewById(R.id.popup_layout);
 			holder.text = (TextView) convertView.findViewById(R.id.popup_text);
 			holder.type = type;

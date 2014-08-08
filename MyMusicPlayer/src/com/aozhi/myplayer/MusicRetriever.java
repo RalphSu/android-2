@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.musicplayer;
+package com.aozhi.myplayer;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -35,6 +35,7 @@ public class MusicRetriever {
 	final String TAG = "MusicRetriever";
 
 	ContentResolver mContentResolver;
+	Cursor cur;
 
 	// the items (songs) we have queried
 	List<Item> mItems = new ArrayList<Item>();
@@ -56,9 +57,8 @@ public class MusicRetriever {
 
 		// Perform a query on the content resolver. The URI we're passing specifies that we
 		// want to query for all audio media on external storage (e.g. SD card)
-		Cursor cur = mContentResolver.query(uri, null, MediaStore.Audio.Media.IS_MUSIC + " = 1", null, null);
+		cur = mContentResolver.query(uri, null, MediaStore.Audio.Media.IS_MUSIC + " = 1", null, null);
 		Log.i(TAG, "Query finished. " + (cur == null ? "Returned NULL." : "Returned a cursor."));
-
 		if (cur == null) {
 			// Query failed...
 			Log.e(TAG, "Failed to retrieve music: cursor is null :-(");
@@ -79,6 +79,9 @@ public class MusicRetriever {
 		int durationColumn = cur.getColumnIndex(MediaStore.Audio.Media.DURATION);
 		int idColumn = cur.getColumnIndex(MediaStore.Audio.Media._ID);
 
+		Log.i(TAG, "Title column index: " + String.valueOf(titleColumn));
+		Log.i(TAG, "ID column index: " + String.valueOf(idColumn));
+
 		// add each song to mItems
 		do {
 			Log.i(TAG, "ID: " + cur.getString(idColumn) + " Title: " + cur.getString(titleColumn));
@@ -98,6 +101,14 @@ public class MusicRetriever {
 		if (mItems.size() <= 0)
 			return null;
 		return mItems.get(mRandom.nextInt(mItems.size()));
+	}
+	
+	public List<Item> getMusicList() {
+		return mItems;
+	}
+	
+	public Cursor getCursor() {
+		return cur;
 	}
 
 	public static class Item {
