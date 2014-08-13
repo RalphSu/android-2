@@ -17,6 +17,7 @@
 package com.aozhi.myplayer;
 
 import java.io.IOException;
+import com.aozhi.myplayer.t2.MainActivity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -82,7 +83,7 @@ public class MusicService extends Service implements OnCompletionListener, OnPre
 		Paused // playback paused (media player ready!)
 	};
 
-	State mState = State.Retrieving;
+	State mState = State.Stopped;
 
 	// if in Retrieving mode, this flag indicates whether we should start playing immediately
 	// when we are ready or not.
@@ -126,7 +127,7 @@ public class MusicService extends Service implements OnCompletionListener, OnPre
 
 	// Our instance of our MusicRetriever, which handles scanning for media and
 	// providing titles and URIs as we need.
-	MusicRetriever mRetriever;
+	// MusicRetriever mRetriever;
 
 	AudioManager mAudioManager;
 	NotificationManager mNotificationManager;
@@ -166,10 +167,6 @@ public class MusicService extends Service implements OnCompletionListener, OnPre
 
 		mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		mAudioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-
-		// Create the retriever and start an asynchronous task that will prepare it.
-		mRetriever = new MusicRetriever(getContentResolver());
-		(new PrepareMusicRetrieverTask(mRetriever, this)).execute();
 
 		// create the Audio Focus Helper, if the Audio Focus feature is available (SDK 8 or above)
 		if (android.os.Build.VERSION.SDK_INT >= 8)
@@ -342,6 +339,7 @@ public class MusicService extends Service implements OnCompletionListener, OnPre
 		// user wants to play a song directly by URL or path. The URL or path comes in the "data"
 		// part of the Intent. This Intent is sent by {@link MainActivity} after the user
 		// specifies the URL/path via an alert box.
+		Log.i(TAG, "============"+mState);
 		if (mState == State.Retrieving) {
 			// we'll play the requested URL right after we finish retrieving
 			mWhatToPlayAfterRetrieve = intent.getData();
@@ -349,7 +347,7 @@ public class MusicService extends Service implements OnCompletionListener, OnPre
 		} else if (mState == State.Playing || mState == State.Paused || mState == State.Stopped) {
 			Log.i(TAG, "Playing from URL/path: " + intent.getData().toString());
 			tryToGetAudioFocus();
-			playNextSong(intent.getData().toString());
+			playNextSong2(intent.getData());
 		}
 	}
 
@@ -380,7 +378,6 @@ public class MusicService extends Service implements OnCompletionListener, OnPre
 			} else {
 				mIsStreaming = false; // playing a locally available song
 
-				playingItem = mRetriever.getRandomItem();
 				if (playingItem == null) {
 					Toast.makeText(
 							this,
@@ -397,6 +394,96 @@ public class MusicService extends Service implements OnCompletionListener, OnPre
 			}
 
 			mSongTitle = playingItem.getTitle();
+
+			mState = State.Preparing;
+			setUpAsForeground(mSongTitle + " (loading)");
+
+			// starts preparing the media player in the background. When it's done, it will call
+			// our OnPreparedListener (that is, the onPrepared() method on this class, since we set
+			// the listener to 'this').
+			//
+			// Until the media player is prepared, we *cannot* call start() on it!
+			mPlayer.prepareAsync();
+
+			// If we are streaming from the internet, we want to hold a Wifi lock, which prevents
+			// the Wifi radio from going to sleep while the song is playing. If, on the other hand,
+			// we are *not* streaming, we want to release the lock if we were holding it before.
+			if (mIsStreaming)
+				mWifiLock.acquire();
+			else if (mWifiLock.isHeld())
+				mWifiLock.release();
+		} catch (IOException ex) {
+			Log.e("MusicService", "IOException playing next song: " + ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+	void playNextSong2(Uri manualUrl) {
+		mState = State.Stopped;
+		relaxResources(false); // release everything except MediaPlayer
+
+		try {
+			MusicRetriever.Item playingItem = null;
+			if (manualUrl != null) {
+				// set the source of the media player to a manual URL or path
+				createMediaPlayerIfNeeded();
+				mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+				mPlayer.setDataSource(getApplicationContext(),manualUrl);
+
+			} else {
+				mIsStreaming = false; // playing a locally available song
+
+				if (playingItem == null) {
+					Toast.makeText(
+							this,
+							"No available music to play. Place some music on your external storage "
+									+ "device (e.g. your SD card) and try again.", Toast.LENGTH_LONG).show();
+					processStopRequest(true); // stop everything!
+					return;
+				}
+
+				// set the source of the media player a a content URI
+				createMediaPlayerIfNeeded();
+				mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+				mPlayer.setDataSource(getApplicationContext(), playingItem.getURI());
+			}
+
+
+			mState = State.Preparing;
+			setUpAsForeground(mSongTitle + " (loading)");
+
+			// starts preparing the media player in the background. When it's done, it will call
+			// our OnPreparedListener (that is, the onPrepared() method on this class, since we set
+			// the listener to 'this').
+			//
+			// Until the media player is prepared, we *cannot* call start() on it!
+			mPlayer.prepareAsync();
+
+			// If we are streaming from the internet, we want to hold a Wifi lock, which prevents
+			// the Wifi radio from going to sleep while the song is playing. If, on the other hand,
+			// we are *not* streaming, we want to release the lock if we were holding it before.
+			if (mIsStreaming)
+				mWifiLock.acquire();
+			else if (mWifiLock.isHeld())
+				mWifiLock.release();
+		} catch (IOException ex) {
+			Log.e("MusicService", "IOException playing next song: " + ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	void playNextSong(Uri url, String title) {
+		mState = State.Stopped;
+		relaxResources(false); // release everything except MediaPlayer
+
+		try {
+			mIsStreaming = false; // playing a locally available song
+
+			// set the source of the media player a a content URI
+			createMediaPlayerIfNeeded();
+			mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			mPlayer.setDataSource(getApplicationContext(), url);
+
+			mSongTitle = title;
 
 			mState = State.Preparing;
 			setUpAsForeground(mSongTitle + " (loading)");

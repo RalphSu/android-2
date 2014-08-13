@@ -1,5 +1,9 @@
-package com.aozhi.myplayer;
+package com.aozhi.myplayer.t2;
 
+import com.aozhi.myplayer.MusicService;
+import com.aozhi.myplayer.R;
+import com.aozhi.myplayer.R.id;
+import com.aozhi.myplayer.R.layout;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;

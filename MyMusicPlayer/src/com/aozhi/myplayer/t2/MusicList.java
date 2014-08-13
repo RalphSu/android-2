@@ -1,4 +1,4 @@
-package com.aozhi.myplayer;
+package com.aozhi.myplayer.t2;
 
 import android.app.ListActivity;
 import android.content.BroadcastReceiver;
@@ -17,8 +17,13 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import com.aozhi.myplayer.MusicRetriever;
+import com.aozhi.myplayer.PrepareMusicRetrieverTask;
+import com.aozhi.myplayer.R;
 import com.aozhi.myplayer.PrepareMusicRetrieverTask.MusicRetrieverPreparedListener;
-import com.aozhi.myplayer.t2.MusicPlayerService;
+import com.aozhi.myplayer.R.id;
+import com.aozhi.myplayer.R.layout;
+import com.aozhi.myplayer.R.string;
 
 public class MusicList extends ListActivity implements MusicRetrieverPreparedListener {
 	private MusicPlayerService mMusicPlayerService = null;

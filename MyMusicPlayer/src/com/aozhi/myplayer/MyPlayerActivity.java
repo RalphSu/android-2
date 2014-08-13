@@ -4,9 +4,8 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
-import com.aozhi.myplayer.t2.List1;
 
-public class MusicActivity extends TabActivity {
+public class MyPlayerActivity extends TabActivity {
 
 	private TabHost tabHost;
 
@@ -17,8 +16,8 @@ public class MusicActivity extends TabActivity {
 
 		final TabHost tabHost = getTabHost();
 
-		tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("¸èÇú").setContent(new Intent(this, List1.class)));
-		tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("ÒÕÊõ¼Ò").setContent(new Intent(this, List1.class)));
+		tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("¸èÇú").setContent(new Intent(this, MyMusicList.class)));
+		tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("³ªÆ¬").setContent(new Intent(this, MyMusicList.class)));
 		
 	}
 

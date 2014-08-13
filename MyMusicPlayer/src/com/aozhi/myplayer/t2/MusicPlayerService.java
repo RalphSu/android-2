@@ -1,10 +1,10 @@
 package com.aozhi.myplayer.t2;
 
 import java.io.IOException;
-
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 
@@ -73,6 +73,24 @@ public class MusicPlayerService extends Service
 		{
 			mMediaPlayer.reset();
 			mMediaPlayer.setDataSource(path);
+			mMediaPlayer.prepare();
+		}
+		catch (IOException e)
+		{
+			return;
+		}
+		catch (IllegalArgumentException e)
+		{
+			return;
+		}
+	}
+	public void setDataSource(Uri uri)
+	{
+		
+		try
+		{
+			mMediaPlayer.reset();
+			mMediaPlayer.setDataSource(getApplicationContext(), uri);
 			mMediaPlayer.prepare();
 		}
 		catch (IOException e)

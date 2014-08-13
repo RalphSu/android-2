@@ -78,13 +78,14 @@ public class MusicRetriever {
 		int albumColumn = cur.getColumnIndex(MediaStore.Audio.Media.ALBUM);
 		int durationColumn = cur.getColumnIndex(MediaStore.Audio.Media.DURATION);
 		int idColumn = cur.getColumnIndex(MediaStore.Audio.Media._ID);
+		int dataColumn = cur.getColumnIndex(MediaStore.Audio.Media.DATA);
 
 		Log.i(TAG, "Title column index: " + String.valueOf(titleColumn));
 		Log.i(TAG, "ID column index: " + String.valueOf(idColumn));
 
 		// add each song to mItems
 		do {
-			Log.i(TAG, "ID: " + cur.getString(idColumn) + " Title: " + cur.getString(titleColumn));
+			Log.i(TAG, "ID: " + cur.getString(idColumn) + " Title: " + cur.getString(titleColumn)+" Path: "+cur.getString(dataColumn));
 			mItems.add(new Item(cur.getLong(idColumn), cur.getString(artistColumn), cur.getString(titleColumn), cur
 					.getString(albumColumn), cur.getLong(durationColumn)));
 		} while (cur.moveToNext());

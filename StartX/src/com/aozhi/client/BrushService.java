@@ -4,9 +4,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.aozhi.client.util.BluestacksPropService;
@@ -27,59 +30,57 @@ public class BrushService {
 	private String STOPLAUNCHER = "";
 	private String bluestackprop;
 	private String productFile;
-	private boolean isModifyProduct=false;
-	private Map<String,String[]> productMap = null;
+	private boolean isModifyProduct = false;
+	private Map<String, String[]> productMap = null;
 	private String[] RUNACTIVITYS = null;
 	private String[] IMEIFILES = null;
 	private List<String> imeiList = null;
+	private List<String> busyHours;
 	private final String separator = ",";
 
+	private int delayStart = 30;
+	private int delayExit = 10;
+	private int delayApp = 4;
+
 	public void start(String[] args) {
+		String productID = "1";
+		int startIndex = 0;
 		logger.info("======> 加载启动参数");
 		loadProperties(args);
 		logger.info("======> 加载IMEI文件");
 		loadImeiFiles();
 		logger.info("======> 加载产品型号文件");
 		loadProductFiles();
-		logger.info("======> 加载当前注册表的IMEI");
-		int startIndex = getStartImeiIndex();
+		logger.info("======> 查询当前系统的IMEI");
+
+		startIndex = getStartImeiIndex();
 		for (int i = startIndex; i < imeiList.size(); i++) {
 			String guid = imeiList.get(i);
-			logger.info("======> 修改IMEI(" + (i + 1) + " : " + guid + ")");
-			setUserGuid(guid);
+			String[] items = guid.split(separator);
+			if (items.length != 2) {
+				continue;
+			}
+
+			logger.info("======> 修改IMEI(" + (i + 1) + " : " + items[1] + ")");
+			setUserGuid(items[1]);
 			logger.info("======> 启动ADB服务");
 			startAdbService();
 			logger.info("======> 启动blueStacks");
 			startBlueStacks();
 			logger.info("======> 打开应用");
 			startApp();
+			if (!productID.equals(items[0])) {
+				logger.info("======> 修改blueStacks配置文件");
+				productID = items[0];
+				modifyProductName(items[0]);
+			}
 			logger.info("======> 退出blueStacks");
 			exitBlueStacks();
+			if (!busyHours.contains(getHour())) {
+				delay(ThreadLocalRandom.current().nextInt(5) * 60);
+			}
 		}
 	}
-
-	public void start2(String[] args) {
-		logger.info("======> 加载启动参数");
-		loadProperties(args);
-		logger.info("======> 加载IMEI文件");
-		loadImeiFiles();
-		loadProductFiles();
-		logger.info("======> 加载当前注册表的IMEI");
-		logger.info("======> 启动ADB服务");
-		//startAdbService();
-		logger.info("======> 启动blueStacks");
-		// startBlueStacks();
-		if (isModifyProduct) {
-			logger.info("======> 修改blueStacks配置");
-			
-			modifyProductName();
-		}
-		 logger.info("======> 退出blueStacks");
-		// exitBlueStacks();
-
-	}
-
-	
 
 	/**
 	 * 启动ADB服务
@@ -94,12 +95,12 @@ public class BrushService {
 	/**
 	 * 修改机型名称
 	 */
-	public void modifyProductName() {
-		enterAdbShell();
-		BluestacksPropService propService=new BluestacksPropService(bluestackprop);
-		String[] para=productMap.get("2");
+	public void modifyProductName(String productId) {
+		String[] para = productMap.get(productId);
+		BluestacksPropService propService = new BluestacksPropService(bluestackprop);
 		propService.generateBluestackProp(para[0], para[1]);
-		runCommand(buildAdbCommand("push") + bluestackprop+" /data/bluestacks.prop");
+		enterAdbShell();
+		runCommand(buildAdbCommand("push") + bluestackprop + " /data/bluestacks.prop");
 	}
 
 	/**
@@ -108,6 +109,7 @@ public class BrushService {
 	private void enterAdbShell() {
 		try {
 			runCommand(buildAdbCommand("shell"), new FileInputStream("command.txt"));
+			delay(3);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -118,7 +120,7 @@ public class BrushService {
 	 */
 	public void startBlueStacks() {
 		runCommand(STARTLAUNCHER);
-		delay(30);
+		delay(delayStart);
 	}
 
 	/**
@@ -126,13 +128,13 @@ public class BrushService {
 	 */
 	public void exitBlueStacks() {
 		runCommand(STOPLAUNCHER);
-		delay(10);
+		delay(delayExit);
 	}
 
 	private void startApp() {
 		for (String activity : RUNACTIVITYS) {
 			runCommand(buildActivityRunCommand(activity));
-			delay(4);
+			delay(delayApp);
 		}
 	}
 
@@ -146,25 +148,52 @@ public class BrushService {
 		IMEIFILES = propertiesLoder.getProperty("IMEI.FILES").split(separator);
 		String enable = propertiesLoder.getProperty("Product.enable");
 		if ("true".equalsIgnoreCase(enable)) {
-			isModifyProduct=true;
+			isModifyProduct = true;
 			productFile = propertiesLoder.getProperty("Product.name");
 		}
-		bluestackprop=propertiesLoder.getProperty("BlueStacks.prop")+"/bulestacks.prop";
+		bluestackprop = propertiesLoder.getProperty("BlueStacks.prop") + "/bulestacks.prop";
+
+		delayStart = Integer.parseInt(propertiesLoder.getProperty("delay.start"));
+		delayExit = Integer.parseInt(propertiesLoder.getProperty("delay.exit"));
+		delayApp = Integer.parseInt(propertiesLoder.getProperty("delay.app"));
+
+		String hours = propertiesLoder.getProperty("busy.hour");
+		busyHours = getBusyHourList(hours);
 	}
 
-	
+	private List<String> getBusyHourList(String hours) {
+		List<String> list = new ArrayList<>();
+		if (hours != null) {
+			String[] items = hours.split(",");
+			for (int i = 0; i < items.length; i++) {
+				if (items[i].indexOf("-") != -1) {
+					String[] h = items[i].split("-");
+					for (int j = Integer.parseInt(h[0]); j <= Integer.parseInt(h[1]); j++) {
+						list.add(String.valueOf(j));
+					}
+				} else {
+					list.add(items[i]);
+				}
+			}
+		}
+		return list;
+	}
+
 	private void loadImeiFiles() {
 		imeiList = RegistryUtil.read(IMEIFILES);
 	}
-	
+
 	private void loadProductFiles() {
 		if (!isModifyProduct) {
 			return;
 		}
-		productMap=new HashMap<String, String[]>();
-		List<String> pList=RegistryUtil.read(productFile);
-		for (int i = 0; i < pList.size(); i++) {
-			productMap.put((i+1)+"", pList.get(i).split(separator));
+		productMap = new HashMap<String, String[]>();
+		List<String> pList = RegistryUtil.read(productFile);
+		for (String line : pList) {
+			String[] items = line.split("#");
+			if (items.length == 2) {
+				productMap.put(items[0].trim(), items[1].split(separator));
+			}
 		}
 	}
 
@@ -179,7 +208,7 @@ public class BrushService {
 	}
 
 	private void runCommand(String cmd) {
-		Process process =null;
+		Process process = null;
 		try {
 			logger.debug(" ------->执行命令:" + cmd);
 			process = Runtime.getRuntime().exec(cmd);
@@ -192,8 +221,8 @@ public class BrushService {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}finally {
-			if (null!=process) {
+		} finally {
+			if (null != process) {
 				process.destroy();
 			}
 		}
@@ -247,9 +276,9 @@ public class BrushService {
 
 		return buf.toString();
 	}
-	
+
 	/**
-	 * 获取启动时的IMEI
+	 * 获取当前系统的IMEI
 	 * 
 	 * @return
 	 */
@@ -264,4 +293,10 @@ public class BrushService {
 		}
 		return startIndex;
 	}
+
+	private static int getHour() {
+		Calendar calendar = Calendar.getInstance();
+		return calendar.get(Calendar.HOUR_OF_DAY);
+	}
+
 }
