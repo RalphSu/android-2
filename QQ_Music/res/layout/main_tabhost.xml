@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/tabhost_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TabHost
+            android:id="@+id/main_tabhost"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/main_top_bar_bg" >
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <ScrollView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginTop="55dp"
+                        android:fadingEdge="vertical"
+                        android:scrollbars="vertical" >
+
+                        <TableLayout
+                            android:id="@+id/main_tab1_content"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent" >
+
+                            <TableRow
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content" >
+
+                                <ImageView
+                                    android:id="@+id/main_tab1_image"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/account_bg" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content" >
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="70dp"
+                                    android:orientation="horizontal" >
+
+                                    <RelativeLayout
+                                        android:id="@+id/all_music_view"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="70dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/play_list_view" >
+
+                                        <ImageView
+                                            android:id="@+id/allmusic_icon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="20dp"
+                                            android:src="@drawable/cloud_all_music" />
+
+                                        <TextView
+                                            android:id="@+id/allmusic_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="20dp"
+                                            android:layout_toRightOf="@+id/allmusic_icon"
+                                            android:text="全部歌曲"
+                                            android:textSize="18dp" />
+
+                                        <TextView
+                                            android:id="@+id/allmusic_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_below="@+id/allmusic_text1"
+                                            android:layout_toRightOf="@+id/allmusic_icon"
+                                            android:text="本地0首"
+                                            android:textColor="@android:color/darker_gray" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:id="@+id/favourite_music_view"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="70dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/play_list_view" >
+
+                                        <ImageView
+                                            android:id="@+id/f_music_icon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="20dp"
+                                            android:src="@drawable/cloud_my_favourite_normal" />
+
+                                        <TextView
+                                            android:id="@+id/f_music_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="20dp"
+                                            android:layout_toRightOf="@+id/f_music_icon"
+                                            android:text="我喜欢"
+                                            android:textSize="18dp" />
+
+                                        <ImageView
+                                            android:id="@+id/f_music_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="20dp"
+                                            android:layout_toRightOf="@+id/f_music_text1"
+                                            android:src="@drawable/cloud_i_like"
+                                            android:text="数字" />
+                                    </RelativeLayout>
+                                </LinearLayout>
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content" >
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="70dp"
+                                    android:orientation="horizontal" >
+
+                                    <RelativeLayout
+                                        android:id="@+id/download_music_view"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="70dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/play_list_view" >
+
+                                        <ImageView
+                                            android:id="@+id/d_music_icon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="20dp"
+                                            android:src="@drawable/cloud_downloaded_music" />
+
+                                        <TextView
+                                            android:id="@+id/d_music_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="20dp"
+                                            android:layout_toRightOf="@+id/d_music_icon"
+                                            android:text="下载歌曲"
+                                            android:textSize="18dp" />
+
+                                        <TextView
+                                            android:id="@+id/d_music_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_below="@+id/d_music_text1"
+                                            android:layout_toRightOf="@+id/d_music_icon"
+                                            android:text="数字"
+                                            android:textColor="@android:color/darker_gray" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:id="@+id/create_music_view"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="70dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/play_list_view" >
+
+                                        <ImageView
+                                            android:id="@+id/c_music_icon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="20dp"
+                                            android:src="@drawable/cloud_my_music_list" />
+
+                                        <TextView
+                                            android:id="@+id/c_music_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="20dp"
+                                            android:layout_toRightOf="@+id/c_music_icon"
+                                            android:text="创建歌单"
+                                            android:textSize="18dp" />
+                                    </RelativeLayout>
+                                </LinearLayout>
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content" >
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="70dp"
+                                    android:orientation="horizontal" >
+
+                                    <RelativeLayout
+                                        android:id="@+id/folder_music_view"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="70dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/play_list_view" >
+
+                                        <ImageView
+                                            android:id="@+id/fd_music_icon"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="20dp"
+                                            android:layout_marginTop="20dp"
+                                            android:src="@drawable/cloud_folder" />
+
+                                        <TextView
+                                            android:id="@+id/fd_music_text1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="20dp"
+                                            android:layout_toRightOf="@+id/fd_music_icon"
+                                            android:text="文件夹"
+                                            android:textSize="18dp" />
+
+                                        <TextView
+                                            android:id="@+id/fd_music_text2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_below="@+id/fd_music_text1"
+                                            android:layout_toRightOf="@+id/fd_music_icon"
+                                            android:text="数字"
+                                            android:textColor="@android:color/darker_gray" />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="70dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/play_list_view" >
+                                    </RelativeLayout>
+                                </LinearLayout>
+                            </TableRow>
+                        </TableLayout>
+                    </ScrollView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <ListView
+                        android:id="@+id/netmusic_downloadlist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="55dp" >
+                    </ListView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="55dp"
+                        android:background="#EAEBEC"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/search_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="7dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:drawableLeft="@drawable/search_edit_top_img" />
+
+                        <Button
+                            android:id="@+id/search_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="4"
+                            android:background="@drawable/search_btn" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                       
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tab4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+                </LinearLayout>
+            </FrameLayout>
+        </TabHost>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/miniplayer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="7"
+        android:background="@drawable/mini_background"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2" >
+
+            <ImageView
+                android:id="@+id/mini_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/widget_qqmusic_default_album"
+                android:focusable="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/click_to_playing"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="ClickToPlaying"
+            android:orientation="vertical" >
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:scrollbars="horizontal" >
+
+                <TextView
+                    android:id="@+id/song_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:text="QQ音乐"
+                    android:textColor="@android:color/white"
+                    android:textSize="18dp" />
+            </ScrollView>
+
+            <TextView
+                android:id="@+id/singer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:focusable="false"
+                android:text="音乐你的生活"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/play_or_pause"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/mini_play_button" />
+
+            <LinearLayout
+                android:id="@+id/mini_play_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/play_list_view"
+                android:orientation="horizontal" >
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

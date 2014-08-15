@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/play_progress_bar"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/player_progressbar_height"
+    android:orientation="horizontal"
+    android:paddingBottom="10dip" >
+
+    <TextView
+        android:id="@+id/playtime"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/player_progressbar_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:clickable="false"
+        android:focusable="false"
+        android:paddingLeft="9.0dip"
+        android:paddingTop="10.0dip"
+        android:text="00:00"
+        android:textColor="#ffffffff"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/player_progressbar_height"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:clickable="false"
+        android:focusable="false"
+        android:paddingRight="9.0dip"
+        android:paddingTop="10.0dip"
+        android:text="00:00"
+        android:textColor="#ffffffff"
+        android:textSize="14sp" />
+
+    <SeekBar
+        android:id="@+id/play_seekbar"
+        android:layout_width="208dip"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@+id/playback_total_time"
+        android:layout_toRightOf="@+id/playback_current_time"
+        android:clickable="true"
+        android:focusable="false"
+        android:max="100"
+        android:paddingLeft="9dip"
+        android:paddingRight="9dip"
+        android:progressDrawable="@drawable/seekbar_img"
+        android:thumb="@drawable/media_player_progress_button"
+        android:thumbOffset="5.0dip" />
+
+</RelativeLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/playmusic_container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/player_bg" >
+
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/topbar_height"
+        android:background="@drawable/topbar_bg"
+        android:gravity="center_horizontal" >
+
+        <include layout="@layout/play_music_top" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/playback_album_art"
+        android:layout_width="165dip"
+        android:layout_height="165dip"
+        android:layout_below="@id/topBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/album_bottom_margin"
+        android:layout_marginTop="@dimen/album_top_margin"
+        android:background="@drawable/default_album"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:paddingBottom="@dimen/album_padding"
+        android:paddingLeft="@dimen/album_padding"
+        android:paddingRight="@dimen/album_padding"
+        android:paddingTop="@dimen/album_top_padding" />
+
+    <include
+        android:id="@+id/bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/player_bottombar_height"
+        android:layout_alignParentBottom="true"
+        layout="@layout/play_music_cotrol" />
+
+    <include
+        android:id="@+id/player_progress_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom"
+        layout="@layout/play_music_progressbar" />
+
+    <SlidingDrawer
+        android:id="@+id/playback_drawer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/player_progress_bar" 
+        android:animateOnClick="true"
+        android:animationDuration="100"
+        android:keepScreenOn="false" 
+	    android:bottomOffset="-54.0dip" 
+        android:topOffset="@dimen/topbar_height" 
+        android:content="@+id/lrc"
+        android:handle="@+id/drawer_handle"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/drawer_handle"
+            android:layout_width="fill_parent"
+            android:background="@drawable/lyr_handle_collapse"
+            android:visibility="gone"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/playback_lyrics"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/playback_progress_bar" />
+
+        <TextView
+            android:id="@+id/lrc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="56dip"
+            android:text="显示歌词"
+            android:textColor="@color/white" />
+    </SlidingDrawer>
+    
+
+</RelativeLayout>

@@ -1,0 +1,33 @@
+                ╔═══════════════╗
+                ║       安卓源码服务专家       ║
+  ╔══════╣───────────────╠══════╗
+  ║            ║    http://www.javaapk.com    ║            ║
+  ║            ╚═══════════════╝            ║
+　║                                                          ║
+　║JavaApk声明：                                             ║
+  ║   1) 本站不保证所提供软件或程序的完整性和安全性。        ║
+  ║   2) 转载本站提供的资源请勿删除本说明文件。              ║
+  ║   3) 本站源码为网上搜集或网友提供，如果涉及或侵害到您的版║
+  ║      权，请立即通知我们。                                ║
+  ║   4) 本站提供免费代码只可供研究学习使用，切勿用于商业用途║
+  ║      由此引起一切后果与本站无关。                        ║
+  ║   5) 商业源码请在源码授权范围内进行使用！                ║
+　║                                                          ║
+  ║           JavaApk —— 安卓源码服务专家                  ║
+  ║           联系方式 : javaapk@qq.com                      ║
+  ║    ╔═══════════════════════╗    ║
+  ╚══╣    安卓源码专业站 http://www.JavaApk.com     ╠══╝
+        ╚═══════════════════════╝
+
+源码简介:
+本站之前介绍过数套音乐播放器项目的源码，本项目是apkbus的某个版主的作品，支持拖动进度条来进行转跳播放。本地音乐播放完美实现，在线音乐部分只实现了音乐列表的显示，并没有实现在线音乐的播放功能，带有定时休眠功能，可以设定一个时间让软件自动关闭，项目不大，中文注释丰富。不过在android 2.3.3的droid x上感觉操作不太流畅，点击按钮的时候有反映有明显的时间延迟。项目自带一个1x4的桌面小工具，其他详细的界面可以看一下截图。
+涉及模块&技术
+文件扫描
+Sqlite
+XML
+网络模块
+后台服务
+文件下载
+桌面小工具
+
+...
