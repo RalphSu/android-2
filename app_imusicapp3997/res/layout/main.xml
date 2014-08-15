@@ -15,6 +15,21 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/enter"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/result1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/getRequest"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/result2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/postRequest"
         android:textSize="20sp" />
 
 </LinearLayout>
